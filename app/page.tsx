@@ -1,0 +1,297 @@
+"use client"
+
+import Image from "next/image"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { Camera, Heart, Play, Award } from "lucide-react"
+import { useEffect, useState } from "react"
+
+export default function HomePage() {
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    setIsVisible(true)
+  }, [])
+
+  return (
+    <div className="pt-0 bg-dark">
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Background with cinematic overlay */}
+        <div className="absolute inset-0">
+          <Image
+            src="/photographer-studio-soft-lighting.png"
+            alt="Fotograf Studio"
+            fill
+            className="object-cover opacity-30"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
+          <div className="absolute inset-0 gradient-overlay" />
+        </div>
+
+        {/* Floating elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-20 left-20 w-2 h-2 bg-gold rounded-full animate-pulse opacity-60" />
+          <div className="absolute top-40 right-32 w-1 h-1 bg-gold-light rounded-full animate-pulse opacity-80" />
+          <div className="absolute bottom-32 left-40 w-3 h-3 bg-gold rounded-full animate-pulse opacity-40" />
+          <div className="absolute bottom-20 right-20 w-1 h-1 bg-gold-light rounded-full animate-pulse opacity-70" />
+        </div>
+
+        <div className="relative z-20 container-cinematic">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            {/* Left content */}
+            <div className="space-y-8 pt-56">
+              <div className={`${isVisible ? "animate-cinematic-slide-in" : ""}`}>
+                <div className="text-gold text-lg font-light tracking-[0.2em] mb-4 text-dramatic">
+                  PROFESSIONELLE FOTOGRAFIE
+                </div>
+                <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-light tracking-wider text-white text-cinematic leading-none">
+                  <span className="block animate-text-reveal">DARIA</span>
+                  <span className="block text-gold text-glow" style={{ animationDelay: "0.5s" }}>
+                    FOTO
+                  </span>
+                </h1>
+              </div>
+
+              <div
+                className={`${isVisible ? "animate-cinematic-slide-in" : ""} accent-line-gold inline-block`}
+                style={{ animationDelay: "0.8s" }}
+              >
+                <p className="text-white/90 font-light leading-relaxed max-w-lg">
+                  Künstlerische Vision trifft auf technische Perfektion. Ich erschaffe zeitlose Bilder, die Geschichten
+                  erzählen.
+                </p>
+              </div>
+
+              <div
+                className={`flex flex-col sm:flex-row gap-6 ${isVisible ? "animate-cinematic-slide-in" : ""}`}
+                style={{ animationDelay: "1.2s" }}
+              >
+                <Button
+                  asChild
+                  size="lg"
+                  className="px-12 py-6 btn-primary text-lg"
+                >
+                  <Link href="/portfolio/portraet">
+                    <span>Portfolio entdecken</span>
+                  </Link>
+                </Button>
+                <Button
+                  asChild
+                  size="lg"
+                  className="px-12 py-6 btn-primary text-lg"
+                >
+                  <Link href="/kontakt">
+                    <span>Projekt starten</span>
+                  </Link>
+                </Button>
+              </div>
+            </div>
+
+            {/* Right content - Image */}
+            <div
+              className={`${isVisible ? "animate-cinematic-slide-in-right" : ""}`}
+              style={{ animationDelay: "0.6s" }}
+            >
+              <div className="relative corner-accent">
+                <div className="relative h-[700px] rounded-2xl overflow-hidden cinematic-shadow hover-cinematic">
+                  <Image
+                    src="/professional-photographer-portrait.png"
+                    alt="Daria - Professionelle Fotografin"
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                </div>
+                <div className="absolute -bottom-6 -right-6 glass-gold rounded-2xl p-6 animate-gold-glow">
+                  <div className="text-2xl font-light text-white">10+</div>
+                  <div className="text-sm text-white/80 tracking-wide">Jahre Erfahrung</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <div className="w-6 h-12 border-2 border-gold rounded-full flex justify-center">
+            <div className="w-1 h-4 bg-gold rounded-full mt-2 animate-pulse" />
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="py-32 bg-dark-secondary relative overflow-hidden">
+        {/* Background pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-20 left-20 w-64 h-64 border border-gold rounded-full" />
+          <div className="absolute bottom-20 right-20 w-48 h-48 border border-gold rounded-full" />
+        </div>
+
+        <div className="container-cinematic relative z-10">
+          <div
+            className={`text-center mb-20 ${isVisible ? "animate-cinematic-slide-up" : ""}`}
+            style={{ animationDelay: "1.6s" }}
+          >
+            <div className="text-gold text-lg font-light tracking-[0.2em] mb-4 text-dramatic">MEINE EXPERTISE</div>
+            <h2 className=" font-light tracking-wide text-white text-cinematic accent-line-gold inline-block">
+              Leistungen
+            </h2>
+            <p className="text-white/70 max-w-3xl mx-auto mt-8 font-light">
+              Von intimen Porträts bis zu großen Produktionen - jedes Projekt wird mit derselben Leidenschaft und
+              Präzision umgesetzt.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {[
+              {
+                image: "/professional-portrait.png",
+                title: "Porträt",
+                description: "Authentische Charakterstudien, die die Essenz der Person einfangen",
+                delay: "1.8s",
+                animation: "animate-cinematic-slide-in",
+              },
+              {
+                image: "/creative-content-photography.png",
+                title: "Content",
+                description: "Strategische visuelle Inhalte für moderne Marken und Unternehmen",
+                delay: "2s",
+                animation: "animate-cinematic-slide-up",
+              },
+              {
+                image: "/happy-family-outdoors.png",
+                title: "Familie",
+                description: "Emotionale Familiengeschichten in natürlicher, entspannter Atmosphäre",
+                delay: "2.2s",
+                animation: "animate-cinematic-slide-in-right",
+              },
+            ].map((service) => (
+              <div
+                key={service.title}
+                className={`group ${isVisible ? service.animation : ""}`}
+                style={{ animationDelay: service.delay }}
+              >
+                <div className="relative h-96 mb-8 overflow-hidden rounded-2xl cinematic-shadow hover-cinematic corner-accent">
+                  <Image
+                    src={service.image || "/placeholder.svg"}
+                    alt={service.title}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
+                  <div className="absolute bottom-6 left-6 right-6">
+                    <h3 className="text-3xl font-light text-white mb-2 text-cinematic">{service.title}</h3>
+                    <div className="w-12 h-0.5 bg-gold mb-3" />
+                    <p className="text-white/80 font-light leading-relaxed">{service.description}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div
+            className={`text-center mt-16 ${isVisible ? "animate-cinematic-fade-in" : ""}`}
+            style={{ animationDelay: "2.4s" }}
+          >
+            <Button
+              asChild
+              size="lg"
+              className="px-12 py-6 btn-primary text-lg"
+            >
+              <Link href="/leistungen"><span>Alle Leistungen entdecken</span></Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section className="py-32 bg-dark relative overflow-hidden">
+        <div className="container-cinematic">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div className={`${isVisible ? "animate-cinematic-slide-in" : ""}`} style={{ animationDelay: "2.6s" }}>
+              <div className="text-gold text-lg font-light tracking-[0.2em] mb-4 text-dramatic">ÜBER MICH</div>
+              <h2 className=" font-light tracking-wide text-white text-cinematic accent-line-gold inline-block">
+                Leidenschaft
+                <span className="block text-gold">für Perfektion</span>
+              </h2>
+              <p className="text-white/80 mb-12 leading-relaxed font-light mt-8">
+                Seit über einem Jahrzehnt verwandle ich Visionen in unvergessliche Bilder. Jedes Projekt ist eine neue
+                Geschichte, die darauf wartet, erzählt zu werden.
+              </p>
+
+              <div className="grid grid-cols-3 gap-8 mb-12">
+                {[
+                  { icon: Camera, label: "10+", sublabel: "Jahre Expertise" },
+                  { icon: Heart, label: "500+", sublabel: "Projekte" },
+                  { icon: Award, label: "15+", sublabel: "Auszeichnungen" },
+                ].map((stat, index) => (
+                  <div
+                    key={stat.label}
+                    className={`text-center glass-dark rounded-2xl p-6 hover-gold-lift ${
+                      isVisible ? "animate-cinematic-fade-in" : ""
+                    }`}
+                    style={{ animationDelay: `${2.8 + index * 0.2}s` }}
+                  >
+                    <stat.icon className="h-10 w-10 text-gold mx-auto mb-4" />
+                    <div className="text-3xl font-light text-white mb-2 text-cinematic">{stat.label}</div>
+                    <div className="text-sm text-white/60 font-light tracking-wide">{stat.sublabel}</div>
+                  </div>
+                ))}
+              </div>
+
+              <Button
+                asChild
+                size="lg"
+                className="px-12 py-6 btn-primary text-lg"
+              >
+                <Link href="/about-mich"><span>Meine Geschichte</span></Link>
+              </Button>
+            </div>
+
+            <div className={`${isVisible ? "animate-cinematic-slide-in-right" : ""}`} style={{ animationDelay: "3s" }}>
+              <div className="relative corner-accent">
+                <div className="relative h-[600px] rounded-2xl overflow-hidden cinematic-shadow hover-cinematic">
+                  <Image src="/images/daria-portrait.jpg" alt="Daria - Fotografin" fill className="object-contain" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-32 gradient-cinematic relative overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-gold/5 to-transparent" />
+        </div>
+
+        <div className="container-cinematic text-center relative z-10">
+          <div className={`${isVisible ? "animate-cinematic-slide-up" : ""}`} style={{ animationDelay: "3.2s" }}>
+            <div className="text-gold text-lg font-light tracking-[0.2em] mb-6 text-dramatic">
+              BEREIT FÜR IHR PROJEKT?
+            </div>
+            <h2 className="font-light tracking-wide text-white text-cinematic mb-8 text-glow">
+              Lassen Sie uns
+              <span className="block text-gold">Geschichte schreiben</span>
+            </h2>
+            <p className="text-white/80 mb-12 max-w-4xl mx-auto font-light leading-relaxed">
+              Jedes großartige Bild beginnt mit einer Idee. Teilen Sie Ihre Vision mit mir und lassen Sie uns gemeinsam
+              etwas Außergewöhnliches schaffen.
+            </p>
+            <Button
+              asChild
+              size="lg"
+              className="px-16 py-6 btn-primary text-xl animate-gold-glow"
+            >
+              <Link href="/kontakt">
+                <span>Projekt starten</span>
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+    </div>
+  )
+}
