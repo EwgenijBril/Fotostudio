@@ -12,7 +12,7 @@ export function Footer() {
   }, [])
 
   return (
-    <footer className="bg-dark-secondary border-t border-gold/20 relative overflow-hidden">
+    <footer className="bg-dark-secondary border-t border-t-gray-600 border-gold/20 relative overflow-hidden">
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-10 left-10 w-32 h-32 border border-gold rounded-full" />
         <div className="absolute bottom-10 right-10 w-24 h-24 border border-gold rounded-full" />
@@ -94,7 +94,7 @@ export function Footer() {
         </div>
 
         <div
-          className={`border-t border-gold/20 mt-10 py-8 text-center ${isVisible ? "animate-cinematic-fade-in" : ""}`}
+          className={`border-t border-t-gray-600 border-gold/20 mt-10 py-8 text-center ${isVisible ? "animate-cinematic-fade-in" : ""}`}
           style={{ animationDelay: "0.6s" }}
         >
           <p className="text-white/60 font-light">

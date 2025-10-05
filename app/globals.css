@@ -503,10 +503,10 @@
   }
 
   .btn-primary:hover {
-    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-    color: #000;
+    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 50%, #000000 100%);
+    color: #FFD700;
     border-color: #FFD700;
-    box-shadow: 0 4px 16px rgba(255, 215, 0, 0.2);
+    box-shadow: 0 4px 16px rgba(255, 215, 0, 0.15);
   }
 
   .btn-primary:hover::before {

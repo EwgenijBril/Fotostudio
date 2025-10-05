@@ -190,7 +190,6 @@ export default function AboutPage() {
               </Button>
               <Button
                 asChild
-                variant="outline"
                 size="lg"
                 className="px-12 py-6 btn-primary text-lg"
               >
