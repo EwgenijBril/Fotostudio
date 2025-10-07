@@ -299,3 +299,4 @@ export function ContentGallery({ images, isVisible, onImageClick }: ContentGalle
   )
 }
 
+

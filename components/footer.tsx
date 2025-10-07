@@ -98,7 +98,7 @@ export function Footer() {
           style={{ animationDelay: "0.6s" }}
         >
           <p className="text-white/60 font-light">
-            &copy; {new Date().getFullYear()} Daria - Fotografin. Alle Rechte vorbehalten.
+            &copy; {new Date().getFullYear()} Daria - Fotografin. Alle Rechte vorbehalten. Erstellt mit Rebootly
           </p>
         </div>
       </div>

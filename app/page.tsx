@@ -37,8 +37,8 @@ export default function HomePage() {
           <div className="absolute bottom-20 right-20 w-1 h-1 bg-gold-light rounded-full animate-pulse opacity-70" />
         </div>
 
-        <div className="relative z-20 container-cinematic">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+        <div className="relative z-20 container-cinematic mt-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center py-32 lg:pb-14">
             {/* Left content */}
             <div className="space-y-8 pt-56">
               <div className={`${isVisible ? "animate-cinematic-slide-in" : ""}`}>
@@ -46,8 +46,8 @@ export default function HomePage() {
                   PROFESSIONELLE FOTOGRAFIE
                 </div>
                 <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-light tracking-wider text-white text-cinematic leading-none">
-                  <span className="block animate-text-reveal">DARIA</span>
-                  <span className="block text-gold text-glow" style={{ animationDelay: "0.5s" }}>
+                  <span className="block animate-text-reveal text-3xl">DARIA</span>
+                  <span className="block text-gold text-glow text-3xl" style={{ animationDelay: "0.5s" }}>
                     FOTO
                   </span>
                 </h1>
@@ -93,13 +93,13 @@ export default function HomePage() {
               className={`${isVisible ? "animate-cinematic-slide-in-right" : ""}`}
               style={{ animationDelay: "0.6s" }}
             >
-              <div className="relative corner-accent">
-                <div className="relative h-[700px] rounded-2xl overflow-hidden cinematic-shadow hover-cinematic">
+              <div className="relative corner-accent group">
+                <div className="relative h-[600px] rounded-2xl overflow-hidden cinematic-shadow">
                   <Image
                     src="/professional-photographer-portrait.png"
                     alt="Daria - Professionelle Fotografin"
                     fill
-                    className="object-cover"
+                    className="object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
                 </div>
@@ -172,7 +172,7 @@ export default function HomePage() {
                 className={`group ${isVisible ? service.animation : ""}`}
                 style={{ animationDelay: service.delay }}
               >
-                <div className="relative h-96 mb-8 overflow-hidden rounded-2xl cinematic-shadow hover-cinematic corner-accent">
+                <div className="relative h-96 mb-8 overflow-hidden rounded-2xl cinematic-shadow corner-accent">
                   <Image
                     src={service.image || "/placeholder.svg"}
                     alt={service.title}
@@ -251,8 +251,8 @@ export default function HomePage() {
 
             <div className={`${isVisible ? "animate-cinematic-slide-in-right" : ""}`} style={{ animationDelay: "3s" }}>
               <div className="relative corner-accent">
-                <div className="relative h-[600px] rounded-2xl overflow-hidden cinematic-shadow hover-cinematic">
-                  <Image src="/images/daria-portrait.jpg" alt="Daria - Fotografin" fill className="object-contain" />
+                <div className="relative h-[600px] rounded-2xl overflow-hidden cinematic-shadow group">
+                  <Image src="/images/daria-portrait.jpg" alt="Daria - Fotografin" fill className="object-contain group-hover:scale-110 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
                 </div>
               </div>

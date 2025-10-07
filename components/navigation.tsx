@@ -44,7 +44,6 @@ export function Navigation() {
                      loading="lazy"
                    />
             </div>
-            <div className="absolute -bottom-2 left-0 w-0 h-0.5 gradient-gold group-hover:w-full transition-all duration-700" />
           </Link>
 
           {/* Desktop Navigation */}
