@@ -5,7 +5,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft, Check, Clock, Camera, Users, Award, Eye, FileText } from "lucide-react"
 import { useEffect, useState } from "react"
-import { PuzzleGallery } from "@/components/puzzle-gallery"
+import { ReportageGallery } from "@/components/reportage-gallery"
 
 export default function ReportagePage() {
   const [isVisible, setIsVisible] = useState(false)
@@ -82,7 +82,7 @@ export default function ReportagePage() {
       </section>
 
       {/* Portfolio Gallery */}
-      <PuzzleGallery
+      <ReportageGallery
         images={images}
         isVisible={isVisible}
         onImageClick={setSelectedImage}

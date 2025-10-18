@@ -2,6 +2,8 @@
 
 import Image from "next/image"
 import { Eye } from "lucide-react"
+import Masonry from "react-masonry-css"
+import { useState, useEffect, useRef } from "react"
 
 interface ImageProps {
   id: number
@@ -18,285 +20,135 @@ interface ReportageGalleryProps {
 }
 
 export function ReportageGallery({ images, isVisible, onImageClick }: ReportageGalleryProps) {
+  const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set())
+  const [visibleImages, setVisibleImages] = useState<Set<number>>(new Set())
+  const imageRefs = useRef<Map<number, HTMLDivElement>>(new Map())
+
+  // Настройки для разных размеров экрана - 4 колонки для более плотной сетки
+  const breakpointColumnsObj = {
+    default: 4,  // 4 колонки по умолчанию
+    1200: 3,     // 3 колонки на больших экранах
+    900: 2,      // 2 колонки на планшетах
+    600: 1       // 1 колонка на мобильных
+  }
+
+  // Функция для обработки загрузки изображения
+  const handleImageLoad = (imageId: number) => {
+    setLoadedImages(prev => new Set(prev).add(imageId))
+  }
+
+  // Intersection Observer для анимаций при скролле
+  useEffect(() => {
+    const observers: IntersectionObserver[] = []
+
+    imageRefs.current.forEach((ref, imageId) => {
+      if (ref) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                setVisibleImages((prev) => new Set(prev).add(imageId))
+              }
+            })
+          },
+          { threshold: 0.1, rootMargin: '50px' }
+        )
+        observer.observe(ref)
+        observers.push(observer)
+      }
+    })
+
+    return () => {
+      observers.forEach((observer) => observer.disconnect())
+    }
+  }, [images])
+
+  // Генерируем случайные высоты для более естественного masonry эффекта
+  const getRandomHeight = (index: number) => {
+    const heights = [300, 400, 500, 600, 350, 450, 550, 380, 420, 480, 520]
+    return heights[index % heights.length]
+  }
+
+  // Получаем случайный размер для изображения
+  const getImageSize = (index: number) => {
+    const sizes = [
+      { width: 400, height: 300 },
+      { width: 400, height: 400 },
+      { width: 400, height: 500 },
+      { width: 400, height: 600 },
+      { width: 400, height: 350 },
+      { width: 400, height: 450 },
+      { width: 400, height: 550 },
+      { width: 400, height: 380 },
+      { width: 400, height: 420 },
+      { width: 400, height: 480 },
+      { width: 400, height: 520 }
+    ]
+    return sizes[index % sizes.length]
+  }
+
+  // Определяем хаотичное направление анимации
+  const getRandomAnimation = (index: number) => {
+    const animations = [
+      "animate-reportage-slide-in-left",
+      "animate-reportage-slide-in-right", 
+      "animate-reportage-slide-in-top",
+      "animate-reportage-slide-in-bottom"
+    ]
+    return animations[index % animations.length]
+  }
+
   return (
     <div className="py-32 bg-dark relative overflow-hidden">
       <div className="container-cinematic">
         <div
-          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4 ${isVisible ? "animate-cinematic-slide-up" : ""}`}
+          className={`${isVisible ? "animate-cinematic-slide-up" : ""}`}
           style={{ animationDelay: "0.4s" }}
         >
-          {/* Row 1 - Одна большая */}
-          <div 
-            className={`col-span-1 md:col-span-2 lg:col-span-3 xl:col-span-3 group cursor-pointer corner-accent ${isVisible ? "animate-cinematic-fade-in" : ""}`}
-            style={{ animationDelay: "0.6s" }}
-            onClick={() => onImageClick(0)}
+          <Masonry
+            breakpointCols={breakpointColumnsObj}
+            className="reportage-masonry-grid"
+            columnClassName="reportage-masonry-column"
           >
-            <div className="relative w-full aspect-[3/2] overflow-hidden rounded-2xl cinematic-shadow hover-cinematic">
+            {images.map((image, index) => {
+              const isImageVisible = visibleImages.has(image.id)
+              const animationClass = getRandomAnimation(index)
+              
+              return (
+                <div 
+                  key={image.id}
+                  ref={(el) => {
+                    if (el) imageRefs.current.set(image.id, el)
+                  }}
+                  className={`reportage-masonry-item group cursor-pointer ${isImageVisible ? animationClass : "opacity-0"}`}
+                  onClick={() => onImageClick(image.id - 1)}
+                >
+                  <div className="relative w-full h-full overflow-hidden border-none">
               <Image
-                src={images[0]?.src || "/placeholder.svg"}
-                alt={images[0]?.alt || "Image"}
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-700"
+                      src={image.src}
+                      alt={image.alt}
+                      width={getImageSize(index).width}
+                      height={getImageSize(index).height}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      onLoad={() => handleImageLoad(image.id)}
+                      loading="lazy"
+                      placeholder="blur"
+                      blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
-              <div className="absolute bottom-6 left-6 right-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                <h3 className="text-lg font-light text-white mb-2 text-cinematic">{images[0]?.alt}</h3>
+                    <div className="absolute bottom-4 left-4 right-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                      <h3 className="text-sm font-light text-white mb-2 text-cinematic">{image.alt}</h3>
               </div>
               <div className="absolute top-4 right-4 glass-dark rounded-lg p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <Eye className="h-4 w-4 text-gold" />
               </div>
             </div>
           </div>
-
-          {/* Row 2 - Три равные */}
-          <div 
-            className={`col-span-1 md:col-span-1 lg:col-span-1 xl:col-span-1 group cursor-pointer corner-accent ${isVisible ? "animate-cinematic-fade-in" : ""}`}
-            style={{ animationDelay: "0.7s" }}
-            onClick={() => onImageClick(1)}
-          >
-            <div className="relative w-full aspect-[1/1] overflow-hidden rounded-2xl cinematic-shadow hover-cinematic">
-              <Image
-                src={images[1]?.src || "/placeholder.svg"}
-                alt={images[1]?.alt || "Image"}
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
-              <div className="absolute bottom-6 left-6 right-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                <h3 className="text-lg font-light text-white mb-2 text-cinematic">{images[1]?.alt}</h3>
-              </div>
-              <div className="absolute top-4 right-4 glass-dark rounded-lg p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <Eye className="h-4 w-4 text-gold" />
-              </div>
-            </div>
-          </div>
-          
-          <div 
-            className={`col-span-1 md:col-span-1 lg:col-span-1 xl:col-span-1 group cursor-pointer corner-accent ${isVisible ? "animate-cinematic-fade-in" : ""}`}
-            style={{ animationDelay: "0.8s" }}
-            onClick={() => onImageClick(2)}
-          >
-            <div className="relative w-full aspect-[1/1] overflow-hidden rounded-2xl cinematic-shadow hover-cinematic">
-              <Image
-                src={images[2]?.src || "/placeholder.svg"}
-                alt={images[2]?.alt || "Image"}
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
-              <div className="absolute bottom-6 left-6 right-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                <h3 className="text-lg font-light text-white mb-2 text-cinematic">{images[2]?.alt}</h3>
-              </div>
-              <div className="absolute top-4 right-4 glass-dark rounded-lg p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <Eye className="h-4 w-4 text-gold" />
-              </div>
-            </div>
-          </div>
-          
-          <div 
-            className={`col-span-1 md:col-span-2 lg:col-span-1 xl:col-span-1 group cursor-pointer corner-accent ${isVisible ? "animate-cinematic-fade-in" : ""}`}
-            style={{ animationDelay: "0.9s" }}
-            onClick={() => onImageClick(3)}
-          >
-            <div className="relative w-full aspect-[1/1] overflow-hidden rounded-2xl cinematic-shadow hover-cinematic">
-              <Image
-                src={images[3]?.src || "/placeholder.svg"}
-                alt={images[3]?.alt || "Image"}
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
-              <div className="absolute bottom-6 left-6 right-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                <h3 className="text-lg font-light text-white mb-2 text-cinematic">{images[3]?.alt}</h3>
-              </div>
-              <div className="absolute top-4 right-4 glass-dark rounded-lg p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <Eye className="h-4 w-4 text-gold" />
-              </div>
-            </div>
-          </div>
-
-          {/* Row 3 - Две разные */}
-          <div 
-            className={`col-span-1 md:col-span-2 lg:col-span-2 xl:col-span-2 group cursor-pointer corner-accent ${isVisible ? "animate-cinematic-fade-in" : ""}`}
-            style={{ animationDelay: "1.0s" }}
-            onClick={() => onImageClick(4)}
-          >
-            <div className="relative w-full aspect-[2/1] overflow-hidden rounded-2xl cinematic-shadow hover-cinematic">
-              <Image
-                src={images[4]?.src || "/placeholder.svg"}
-                alt={images[4]?.alt || "Image"}
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
-              <div className="absolute bottom-6 left-6 right-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                <h3 className="text-lg font-light text-white mb-2 text-cinematic">{images[4]?.alt}</h3>
-              </div>
-              <div className="absolute top-4 right-4 glass-dark rounded-lg p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <Eye className="h-4 w-4 text-gold" />
-              </div>
-            </div>
-          </div>
-          
-          <div 
-            className={`col-span-1 md:col-span-2 lg:col-span-1 xl:col-span-1 group cursor-pointer corner-accent ${isVisible ? "animate-cinematic-fade-in" : ""}`}
-            style={{ animationDelay: "1.1s" }}
-            onClick={() => onImageClick(5)}
-          >
-            <div className="relative w-full aspect-[1/2] overflow-hidden rounded-2xl cinematic-shadow hover-cinematic">
-              <Image
-                src={images[5]?.src || "/placeholder.svg"}
-                alt={images[5]?.alt || "Image"}
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
-              <div className="absolute bottom-6 left-6 right-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                <h3 className="text-lg font-light text-white mb-2 text-cinematic">{images[5]?.alt}</h3>
-              </div>
-              <div className="absolute top-4 right-4 glass-dark rounded-lg p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <Eye className="h-4 w-4 text-gold" />
-              </div>
-            </div>
-          </div>
-
-          {/* Row 4 - Одна большая */}
-          <div 
-            className={`col-span-1 md:col-span-2 lg:col-span-3 xl:col-span-3 group cursor-pointer corner-accent ${isVisible ? "animate-cinematic-fade-in" : ""}`}
-            style={{ animationDelay: "1.2s" }}
-            onClick={() => onImageClick(6)}
-          >
-            <div className="relative w-full aspect-[3/1] overflow-hidden rounded-2xl cinematic-shadow hover-cinematic">
-              <Image
-                src={images[6]?.src || "/placeholder.svg"}
-                alt={images[6]?.alt || "Image"}
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
-              <div className="absolute bottom-6 left-6 right-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                <h3 className="text-lg font-light text-white mb-2 text-cinematic">{images[6]?.alt}</h3>
-              </div>
-              <div className="absolute top-4 right-4 glass-dark rounded-lg p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <Eye className="h-4 w-4 text-gold" />
-              </div>
-            </div>
-          </div>
-
-          {/* Row 5 - Три равные */}
-          <div 
-            className={`col-span-1 md:col-span-1 lg:col-span-1 xl:col-span-1 group cursor-pointer corner-accent ${isVisible ? "animate-cinematic-fade-in" : ""}`}
-            style={{ animationDelay: "1.3s" }}
-            onClick={() => onImageClick(7)}
-          >
-            <div className="relative w-full aspect-[1/1] overflow-hidden rounded-2xl cinematic-shadow hover-cinematic">
-              <Image
-                src={images[7]?.src || "/placeholder.svg"}
-                alt={images[7]?.alt || "Image"}
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
-              <div className="absolute bottom-6 left-6 right-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                <h3 className="text-lg font-light text-white mb-2 text-cinematic">{images[7]?.alt}</h3>
-              </div>
-              <div className="absolute top-4 right-4 glass-dark rounded-lg p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <Eye className="h-4 w-4 text-gold" />
-              </div>
-            </div>
-          </div>
-          
-          <div 
-            className={`col-span-1 md:col-span-1 lg:col-span-1 xl:col-span-1 group cursor-pointer corner-accent ${isVisible ? "animate-cinematic-fade-in" : ""}`}
-            style={{ animationDelay: "1.4s" }}
-            onClick={() => onImageClick(8)}
-          >
-            <div className="relative w-full aspect-[1/1] overflow-hidden rounded-2xl cinematic-shadow hover-cinematic">
-              <Image
-                src={images[8]?.src || "/placeholder.svg"}
-                alt={images[8]?.alt || "Image"}
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
-              <div className="absolute bottom-6 left-6 right-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                <h3 className="text-lg font-light text-white mb-2 text-cinematic">{images[8]?.alt}</h3>
-              </div>
-              <div className="absolute top-4 right-4 glass-dark rounded-lg p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <Eye className="h-4 w-4 text-gold" />
-              </div>
-            </div>
-          </div>
-          
-          <div 
-            className={`col-span-1 md:col-span-2 lg:col-span-1 xl:col-span-1 group cursor-pointer corner-accent ${isVisible ? "animate-cinematic-fade-in" : ""}`}
-            style={{ animationDelay: "1.5s" }}
-            onClick={() => onImageClick(9)}
-          >
-            <div className="relative w-full aspect-[1/1] overflow-hidden rounded-2xl cinematic-shadow hover-cinematic">
-              <Image
-                src={images[9]?.src || "/placeholder.svg"}
-                alt={images[9]?.alt || "Image"}
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
-              <div className="absolute bottom-6 left-6 right-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                <h3 className="text-lg font-light text-white mb-2 text-cinematic">{images[9]?.alt}</h3>
-              </div>
-              <div className="absolute top-4 right-4 glass-dark rounded-lg p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <Eye className="h-4 w-4 text-gold" />
-              </div>
-            </div>
-          </div>
-
-          {/* Row 6 - Две разные */}
-          <div 
-            className={`col-span-1 group cursor-pointer corner-accent ${isVisible ? "animate-cinematic-fade-in" : ""}`}
-            style={{ animationDelay: "1.6s" }}
-            onClick={() => onImageClick(10)}
-          >
-            <div className="relative w-full aspect-[1/2] overflow-hidden rounded-2xl cinematic-shadow hover-cinematic">
-              <Image
-                src={images[10]?.src || "/placeholder.svg"}
-                alt={images[10]?.alt || "Image"}
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
-              <div className="absolute bottom-6 left-6 right-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                <h3 className="text-lg font-light text-white mb-2 text-cinematic">{images[10]?.alt}</h3>
-              </div>
-              <div className="absolute top-4 right-4 glass-dark rounded-lg p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <Eye className="h-4 w-4 text-gold" />
-              </div>
-            </div>
-          </div>
-          
-          <div 
-            className={`col-span-2 group cursor-pointer corner-accent ${isVisible ? "animate-cinematic-fade-in" : ""}`}
-            style={{ animationDelay: "1.7s" }}
-            onClick={() => onImageClick(11)}
-          >
-            <div className="relative w-full aspect-[2/1] overflow-hidden rounded-2xl cinematic-shadow hover-cinematic">
-              <Image
-                src={images[11]?.src || "/placeholder.svg"}
-                alt={images[11]?.alt || "Image"}
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
-              <div className="absolute bottom-6 left-6 right-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                <h3 className="text-lg font-light text-white mb-2 text-cinematic">{images[11]?.alt}</h3>
-              </div>
-              <div className="absolute top-4 right-4 glass-dark rounded-lg p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <Eye className="h-4 w-4 text-gold" />
-              </div>
-            </div>
-          </div>
+              )
+            })}
+          </Masonry>
         </div>
       </div>
     </div>
   )
 }
-
