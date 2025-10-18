@@ -5,7 +5,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft, Check, Clock, Camera, Users, Award, Eye, Palette } from "lucide-react"
 import { useEffect, useState } from "react"
-import { CreativeGallery } from "@/components/creative-gallery"
+import { PolaroidGallery } from "@/components/polaroid-gallery"
 
 export default function KreativeShootingPage() {
   const [isVisible, setIsVisible] = useState(false)
@@ -82,7 +82,7 @@ export default function KreativeShootingPage() {
       </section>
 
       {/* Portfolio Gallery */}
-      <CreativeGallery 
+      <PolaroidGallery 
         images={images} 
         isVisible={isVisible} 
         onImageClick={setSelectedImage} 

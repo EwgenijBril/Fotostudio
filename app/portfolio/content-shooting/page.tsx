@@ -5,7 +5,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft, Check, Clock, Camera, Users, Award, Eye } from "lucide-react"
 import { useEffect, useState } from "react"
-import { ContentGallery } from "@/components/content-gallery"
+import { MasonryGallery } from "@/components/masonry-gallery"
 
 export default function ContentShootingPage() {
   const [isVisible, setIsVisible] = useState(false)
@@ -82,7 +82,7 @@ export default function ContentShootingPage() {
       </section>
 
       {/* Portfolio Gallery */}
-      <ContentGallery
+      <MasonryGallery
         images={images}
         isVisible={isVisible}
         onImageClick={setSelectedImage}

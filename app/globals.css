@@ -1,4 +1,4 @@
-@tailwind base;
+﻿@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -629,4 +629,1193 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(135deg, #ffbc57, #dbbe00);
+}
+
+/* Masonry Gallery Styles */
+.masonry-grid {
+  display: flex;
+  margin-left: -15px;
+  width: auto;
+}
+
+.masonry-grid-column {
+  padding-left: 15px;
+  background-clip: padding-box;
+}
+
+.masonry-item {
+  /* background: #ffd700; */
+  padding: 2px;
+  /* border-radius: 8px; */
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+  break-inside: avoid;
+}
+
+.masonry-item:hover {
+  /* background: #ffed4e; */
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+  transform: translateY(-5px);
+}
+
+.masonry-item > div {
+  /* border-radius: 6px; */
+  overflow: hidden;
+}
+
+/* Responsive masonry */
+@media (max-width: 1200px) {
+  .masonry-grid {
+    margin-left: -10px;
+  }
+  
+  .masonry-grid-column {
+    padding-left: 10px;
+  }
+  
+  .masonry-item {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .masonry-grid {
+    margin-left: -5px;
+  }
+  
+  .masonry-grid-column {
+    padding-left: 5px;
+  }
+  
+  .masonry-item {
+    margin-bottom: 5px;
+  }
+}
+
+/* Polaroid Gallery Styles */
+.polaroid-container {
+  position: relative;
+  min-height: 800px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 40px 20px;
+}
+
+.polaroid-item {
+  position: absolute;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+}
+
+.polaroid-item:hover {
+  transform: rotate(0deg) scale(1.05) !important;
+  z-index: 100 !important;
+}
+
+.polaroid-card {
+  width: 100%;
+  height: 100%;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.3),
+    0 8px 40px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.polaroid-item:hover .polaroid-card {
+  box-shadow: 
+    0 8px 30px rgba(0, 0, 0, 0.4),
+    0 16px 60px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.polaroid-photo {
+  position: relative;
+  width: 100%;
+  height: calc(100% - 60px);
+  overflow: hidden;
+}
+
+.polaroid-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.polaroid-frame {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.polaroid-text {
+  text-align: center;
+  width: 100%;
+}
+
+/* Позиционирование полароидов */
+.polaroid-item:nth-child(1) { top: 50px; left: 10%; }
+.polaroid-item:nth-child(2) { top: 100px; left: 60%; }
+.polaroid-item:nth-child(3) { top: 200px; left: 5%; }
+.polaroid-item:nth-child(4) { top: 150px; left: 70%; }
+.polaroid-item:nth-child(5) { top: 300px; left: 20%; }
+.polaroid-item:nth-child(6) { top: 250px; left: 80%; }
+.polaroid-item:nth-child(7) { top: 400px; left: 10%; }
+.polaroid-item:nth-child(8) { top: 350px; left: 65%; }
+.polaroid-item:nth-child(9) { top: 500px; left: 30%; }
+.polaroid-item:nth-child(10) { top: 450px; left: 75%; }
+.polaroid-item:nth-child(11) { top: 600px; left: 15%; }
+.polaroid-item:nth-child(12) { top: 550px; left: 60%; }
+
+/* Responsive positioning */
+@media (max-width: 1200px) {
+  .polaroid-container {
+    padding: 30px 15px;
+  }
+  
+  .polaroid-item:nth-child(1) { top: 40px; left: 5%; }
+  .polaroid-item:nth-child(2) { top: 80px; left: 55%; }
+  .polaroid-item:nth-child(3) { top: 160px; left: 0%; }
+  .polaroid-item:nth-child(4) { top: 120px; left: 65%; }
+  .polaroid-item:nth-child(5) { top: 240px; left: 15%; }
+  .polaroid-item:nth-child(6) { top: 200px; left: 75%; }
+  .polaroid-item:nth-child(7) { top: 320px; left: 5%; }
+  .polaroid-item:nth-child(8) { top: 280px; left: 60%; }
+  .polaroid-item:nth-child(9) { top: 400px; left: 25%; }
+  .polaroid-item:nth-child(10) { top: 360px; left: 70%; }
+  .polaroid-item:nth-child(11) { top: 480px; left: 10%; }
+  .polaroid-item:nth-child(12) { top: 440px; left: 55%; }
+}
+
+@media (max-width: 768px) {
+  .polaroid-container {
+    padding: 20px 10px;
+    min-height: 600px;
+  }
+  
+  .polaroid-item {
+    position: static !important;
+    margin: 10px;
+    transform: rotate(0deg) !important;
+  }
+  
+  .polaroid-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Brick Gallery Styles */
+.brick-container {
+  position: relative;
+  width: 100%;
+  padding: 20px 0;
+}
+
+.brick-row {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 15px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.brick-row.visible {
+  animation: brickRowAppear 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation-delay: var(--row-delay, 0s);
+}
+
+/* Смещение для нечётных рядов (кирпичная кладка) */
+.brick-row.offset {
+  padding-left: 150px;
+}
+
+@keyframes brickRowAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) rotateX(20deg);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-5px) rotateX(0deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg);
+  }
+}
+
+.brick-item {
+  flex: 0 0 auto;
+  width: calc(280px * var(--brick-scale, 1));
+  height: 350px;
+  position: relative;
+  cursor: pointer;
+  opacity: 0;
+  animation: brickAppear 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation-delay: var(--brick-delay, 0s);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes brickAppear {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px) rotateZ(-3deg);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.05) translateY(-5px) rotateZ(1deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0) rotateZ(0deg);
+  }
+}
+
+.brick-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #1a1a1a;
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.4),
+    0 4px 12px rgba(0, 0, 0, 0.3),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.brick-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.brick-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.brick-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.brick-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0.5) 30%,
+    transparent 60%
+  );
+  opacity: 0.6;
+  transition: opacity 0.4s ease;
+}
+
+.brick-number {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  font-size: 48px;
+  font-weight: 200;
+  color: rgba(255, 215, 0, 0.2);
+  line-height: 1;
+  font-family: 'Georgia', serif;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.brick-info {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  transform: translateY(30px);
+  opacity: 0;
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.brick-title {
+  font-size: 20px;
+  font-weight: 300;
+  color: white;
+  line-height: 1.4;
+  margin-bottom: 8px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+.brick-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: rgba(255, 215, 0, 0.7);
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.brick-dot {
+  color: rgba(255, 215, 0, 0.3);
+}
+
+.brick-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Раствор между кирпичами */
+.brick-mortar {
+  position: absolute;
+  background: linear-gradient(
+    to right,
+    rgba(255, 215, 0, 0.1),
+    rgba(255, 215, 0, 0.05)
+  );
+  opacity: 0.3;
+  transition: all 0.4s ease;
+}
+
+.brick-mortar-top {
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+}
+
+.brick-mortar-bottom {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+}
+
+.brick-mortar-left {
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+}
+
+.brick-mortar-right {
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+}
+
+/* Hover эффекты */
+.brick-item:hover {
+  transform: translateY(-10px) scale(1.05);
+  z-index: 10;
+}
+
+.brick-item:hover .brick-inner {
+  box-shadow: 
+    0 20px 50px rgba(255, 215, 0, 0.3),
+    0 10px 25px rgba(0, 0, 0, 0.4),
+    inset 0 0 0 2px rgba(255, 215, 0, 0.5);
+}
+
+.brick-item:hover .brick-image {
+  transform: scale(1.1);
+}
+
+.brick-item:hover .brick-gradient {
+  opacity: 0.8;
+}
+
+.brick-item:hover .brick-number {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.brick-item:hover .brick-info {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.brick-item:hover .brick-icon {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.brick-item:hover .brick-mortar {
+  opacity: 1;
+  background: linear-gradient(
+    to right,
+    rgba(255, 215, 0, 0.6),
+    rgba(255, 215, 0, 0.3)
+  );
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+  .brick-row.offset {
+    padding-left: 120px;
+  }
+  
+  .brick-item {
+    width: calc(240px * var(--brick-scale, 1));
+    height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .brick-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .brick-row.offset {
+    padding-left: 0;
+  }
+  
+  .brick-item {
+    width: 85%;
+    max-width: 350px;
+    height: 380px;
+  }
+}
+
+@media (max-width: 480px) {
+  .brick-item {
+    width: 95%;
+    max-width: 320px;
+    height: 400px;
+  }
+  
+  .brick-title {
+    font-size: 18px;
+  }
+  
+  .brick-number {
+    font-size: 36px;
+  }
+}
+
+/* Puzzle Gallery Styles */
+.puzzle-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  grid-auto-flow: dense; /* Плотная упаковка без пустот! */
+  grid-auto-rows: minmax(200px, auto); /* Автоматическая высота строк */
+}
+
+.puzzle-piece {
+  grid-column: span var(--puzzle-span, 1);
+  grid-row: span var(--puzzle-height, 1);
+  position: relative;
+  aspect-ratio: 1 / var(--puzzle-height, 1);
+  cursor: pointer;
+  opacity: 0;
+  transform: scale(0.95) rotateZ(-2deg);
+  animation: puzzlePieceAppear 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation-delay: var(--puzzle-delay, 0s);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes puzzlePieceAppear {
+  0% {
+    opacity: 0;
+    transform: scale(0.95) rotateZ(-2deg) translateY(20px);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.02) rotateZ(1deg) translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotateZ(0deg) translateY(0);
+  }
+}
+
+.puzzle-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #1a1a1a;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.puzzle-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.puzzle-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.puzzle-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.puzzle-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.4) 40%,
+    transparent 70%
+  );
+  opacity: 0.5;
+  transition: opacity 0.4s ease;
+}
+
+.puzzle-index {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.puzzle-index-number {
+  font-size: 32px;
+  font-weight: 200;
+  color: rgba(255, 215, 0, 0.6);
+  line-height: 1;
+  font-family: 'Georgia', serif;
+}
+
+.puzzle-index-icon {
+  color: rgba(255, 215, 0, 0.4);
+  transition: all 0.3s ease;
+}
+
+.puzzle-info {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  transform: translateY(30px);
+  opacity: 0;
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.puzzle-title {
+  font-size: 20px;
+  font-weight: 300;
+  color: white;
+  line-height: 1.4;
+  margin-bottom: 8px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+.puzzle-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.puzzle-size {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 10px;
+  font-size: 10px;
+  color: rgba(255, 215, 0, 0.9);
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 12px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.puzzle-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Швы пазла (границы между элементами) */
+.puzzle-border {
+  position: absolute;
+  background: rgba(255, 215, 0, 0.05);
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.puzzle-border-top {
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+}
+
+.puzzle-border-bottom {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+}
+
+.puzzle-border-left {
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+}
+
+.puzzle-border-right {
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+}
+
+/* Hover эффекты */
+.puzzle-piece:hover {
+  z-index: 20;
+  transform: scale(1.02) translateY(-8px);
+}
+
+.puzzle-piece:hover .puzzle-inner {
+  box-shadow: 
+    0 20px 60px rgba(255, 215, 0, 0.3),
+    0 10px 30px rgba(0, 0, 0, 0.4),
+    inset 0 0 0 2px rgba(255, 215, 0, 0.4);
+}
+
+.puzzle-piece:hover .puzzle-image {
+  transform: scale(1.08);
+}
+
+.puzzle-piece:hover .puzzle-gradient {
+  opacity: 0.7;
+}
+
+.puzzle-piece:hover .puzzle-index {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.puzzle-piece:hover .puzzle-info {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.puzzle-piece:hover .puzzle-icon {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.puzzle-piece:hover .puzzle-index-icon {
+  color: rgba(255, 215, 0, 0.9);
+  transform: rotateY(360deg);
+}
+
+.puzzle-piece:hover .puzzle-border {
+  background: rgba(255, 215, 0, 0.3);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+  .puzzle-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-flow: dense;
+    grid-auto-rows: minmax(180px, auto);
+  }
+  
+  .puzzle-piece {
+    grid-column: span min(var(--puzzle-span, 1), 2);
+  }
+}
+
+@media (max-width: 768px) {
+  .puzzle-grid {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+  
+  .puzzle-piece {
+    grid-column: span 1;
+    grid-row: span 1;
+    aspect-ratio: 4 / 3;
+  }
+  
+  .puzzle-index-number {
+    font-size: 24px;
+  }
+  
+  .puzzle-title {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .puzzle-piece {
+    aspect-ratio: 1 / 1;
+  }
+  
+  .puzzle-index-number {
+    font-size: 20px;
+  }
+  
+  .puzzle-title {
+    font-size: 16px;
+  }
+}
+
+/* Staggered Gallery Styles (Two-Column Offset Layout) */
+.staggered-gallery-container {
+  position: relative;
+  width: 100%;
+}
+
+.staggered-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 500px));
+  gap: 40px;
+  align-items: start;
+  justify-content: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.staggered-column {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  will-change: transform;
+}
+
+/* Смещение правой колонки вниз на 80px для эффекта stagger */
+.staggered-column-right {
+  margin-top: 80px;
+}
+
+.staggered-item {
+  position: relative;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Анимация появления левой колонки - выплывание снизу */
+@keyframes staggeredFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Анимация появления правой колонки - выплывание снизу с большей дистанции */
+@keyframes staggeredFadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-staggered-fade-in {
+  animation: staggeredFadeIn 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.animate-staggered-fade-in-right {
+  animation: staggeredFadeInRight 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.staggered-card {
+  position: relative;
+  width: 100%;
+  height: auto;
+  background: #1a1a1a;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.4),
+    0 5px 15px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* Hover эффект - легкое поднятие с тенью (без увеличения) */
+.staggered-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 20px 50px rgba(255, 215, 0, 0.2),
+    0 12px 30px rgba(0, 0, 0, 0.4),
+    0 6px 15px rgba(255, 215, 0, 0.1),
+    0 0 0 1px rgba(255, 215, 0, 0.2);
+  z-index: 10;
+}
+
+.staggered-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/5; /* Соотношение сторон для food фото */
+  overflow: hidden;
+}
+
+.staggered-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Изображение остается без изменений при hover */
+.staggered-card:hover .staggered-image {
+  transform: none;
+}
+
+.staggered-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Декоративная граница с gradient */
+.staggered-border {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  padding: 2px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 215, 0, 0.6) 0%,
+    rgba(255, 215, 0, 0.3) 50%,
+    rgba(255, 215, 0, 0.6) 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+/* Эффект сияния при hover */
+.staggered-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.15) 50%,
+    transparent 70%
+  );
+  opacity: 0;
+  transform: rotate(45deg) translateX(-100%);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  pointer-events: none;
+}
+
+.staggered-card:hover::after {
+  opacity: 1;
+  transform: rotate(45deg) translateX(100%);
+}
+
+/* Мягкая тень под карточкой */
+.staggered-item::before {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 10%;
+  right: 10%;
+  height: 40px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(0, 0, 0, 0.15) 40%,
+    transparent 70%
+  );
+  filter: blur(15px);
+  opacity: 0.6;
+  transition: all 0.5s ease;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.staggered-card:hover ~ .staggered-item::before,
+.staggered-item:hover::before {
+  bottom: -30px;
+  left: 5%;
+  right: 5%;
+  height: 50px;
+  opacity: 0.9;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 215, 0, 0.4) 0%,
+    rgba(0, 0, 0, 0.3) 40%,
+    transparent 70%
+  );
+}
+
+/* Плавный параллакс эффект */
+.staggered-column {
+  transition: transform 0.1s ease-out;
+}
+
+/* Эффект волны при загрузке */
+@keyframes rippleEffect {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
+
+.staggered-card:hover::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  background: rgba(255, 215, 0, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  animation: rippleEffect 1s ease-out;
+  pointer-events: none;
+}
+
+/* Keyframe для индикатора загрузки */
+@keyframes skeletonLoading {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Индикатор загрузки изображения */
+.staggered-image-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.05) 25%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.05) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeletonLoading 1.5s ease-in-out infinite;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .staggered-grid {
+    gap: 25px;
+  }
+  
+  .staggered-column {
+    gap: 25px;
+  }
+  
+  .staggered-column-right {
+    margin-top: 60px;
+  }
+  
+  .staggered-grid {
+    grid-template-columns: repeat(2, minmax(0, 450px));
+  }
+}
+
+@media (max-width: 768px) {
+  .staggered-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    max-width: 500px;
+  }
+  
+  .staggered-column {
+    gap: 30px;
+  }
+  
+  /* Убираем смещение на мобильных */
+  .staggered-column-right {
+    margin-top: 0;
+  }
+  
+  .staggered-card:hover {
+    transform: translateY(-2px);
+  }
+  
+  .staggered-image-wrapper {
+    aspect-ratio: 4/5;
+  }
+  
+  /* Упрощаем параллакс на мобильных */
+  .staggered-column {
+    transform: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .staggered-grid {
+    gap: 20px;
+    max-width: 400px;
+  }
+  
+  .staggered-column {
+    gap: 20px;
+  }
+  
+  .staggered-image-wrapper {
+    aspect-ratio: 1/1; /* Квадратное соотношение на маленьких экранах */
+  }
+}
+
+/* Accessibility - Focus States */
+.staggered-item:focus-within .staggered-card {
+  outline: 2px solid rgba(255, 215, 0, 0.6);
+  outline-offset: 4px;
+  box-shadow: 
+    0 0 0 4px rgba(255, 215, 0, 0.2),
+    0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Prefers Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .staggered-card,
+  .staggered-image,
+  .staggered-column,
+  .animate-staggered-fade-in,
+  .animate-staggered-fade-in-right {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  .staggered-item {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Product Gallery Animation - Slide in from Left */
+@keyframes productSlideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Product Gallery Animation - Slide in from Right */
+@keyframes productSlideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-product-slide-in-left {
+  animation: productSlideInLeft 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.animate-product-slide-in-right {
+  animation: productSlideInRight 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Responsive Product Gallery */
+@media (max-width: 768px) {
+  @keyframes productSlideInLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes productSlideInRight {
+    0% {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
 }

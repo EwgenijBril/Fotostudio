@@ -5,7 +5,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft, Check, Clock, Camera, Users, Award, Eye, Heart } from "lucide-react"
 import { useEffect, useState } from "react"
-import { FamilyGallery } from "@/components/family-gallery"
+import { BrickGallery } from "@/components/brick-gallery"
 
 export default function KinderUndFamiliePage() {
   const [isVisible, setIsVisible] = useState(false)
@@ -82,7 +82,7 @@ export default function KinderUndFamiliePage() {
       </section>
 
       {/* Portfolio Gallery */}
-      <FamilyGallery
+      <BrickGallery
         images={images}
         isVisible={isVisible}
         onImageClick={setSelectedImage}

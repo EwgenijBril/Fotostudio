@@ -5,7 +5,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft, Check, Clock, Camera, Users, Award, Eye, Utensils } from "lucide-react"
 import { useEffect, useState } from "react"
-import { FoodGallery } from "@/components/food-gallery"
+import { StaggeredGallery } from "@/components/staggered-gallery"
 
 export default function FoodFotoPage() {
   const [isVisible, setIsVisible] = useState(false)
@@ -82,7 +82,7 @@ export default function FoodFotoPage() {
       </section>
 
       {/* Portfolio Gallery */}
-      <FoodGallery
+      <StaggeredGallery
         images={images}
         isVisible={isVisible}
         onImageClick={setSelectedImage}
