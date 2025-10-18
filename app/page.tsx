@@ -94,7 +94,7 @@ export default function HomePage() {
               style={{ animationDelay: "0.6s" }}
             >
               <div className="relative corner-accent group">
-                <div className="relative h-[600px] rounded-2xl overflow-hidden cinematic-shadow">
+                <div className="relative h-[600px] overflow-hidden cinematic-shadow">
                   <Image
                     src="/professional-photographer-portrait.png"
                     alt="Daria - Professionelle Fotografin"
@@ -208,7 +208,7 @@ export default function HomePage() {
       {/* About Section */}
       <section className="py-32 bg-dark relative overflow-hidden">
         <div className="container-cinematic">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center max-w-7xl mx-auto">
             <div className={`${isVisible ? "animate-cinematic-slide-in" : ""}`} style={{ animationDelay: "2.6s" }}>
               <div className="text-gold text-lg font-light tracking-[0.2em] mb-4 text-dramatic">ÜBER MICH</div>
               <h2 className=" font-light tracking-wide text-white text-cinematic accent-line-gold inline-block">
@@ -220,22 +220,28 @@ export default function HomePage() {
                 Geschichte, die darauf wartet, erzählt zu werden.
               </p>
 
-              <div className="grid grid-cols-3 gap-8 mb-12">
+              <div className="grid grid-cols-3 gap-3 mb-12">
                 {[
-                  { icon: Camera, label: "10+", sublabel: "Jahre Expertise" },
-                  { icon: Heart, label: "500+", sublabel: "Projekte" },
-                  { icon: Award, label: "15+", sublabel: "Auszeichnungen" },
-                ].map((stat, index) => (
+                  { src: "/professional-portrait.png", alt: "Portrait Foto" },
+                  { src: "/creative-content-photography.png", alt: "Content Foto" },
+                  { src: "/happy-family-outdoors.png", alt: "Familie Foto" },
+                ].map((photo, index) => (
                   <div
-                    key={stat.label}
-                    className={`text-center glass-dark rounded-2xl p-6 hover-gold-lift ${
+                    key={photo.alt}
+                    className={`group cursor-pointer ${
                       isVisible ? "animate-cinematic-fade-in" : ""
                     }`}
                     style={{ animationDelay: `${2.8 + index * 0.2}s` }}
                   >
-                    <stat.icon className="h-10 w-10 text-gold mx-auto mb-4" />
-                    <div className="text-3xl font-light text-white mb-2 text-cinematic">{stat.label}</div>
-                    <div className="text-sm text-white/60 font-light tracking-wide">{stat.sublabel}</div>
+                    <div className="relative aspect-[16/10] overflow-hidden cinematic-shadow hover-cinematic">
+                      <Image
+                        src={photo.src}
+                        alt={photo.alt}
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-700"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
+                    </div>
                   </div>
                 ))}
               </div>
@@ -249,11 +255,17 @@ export default function HomePage() {
               </Button>
             </div>
 
-            <div className={`${isVisible ? "animate-cinematic-slide-in-right" : ""}`} style={{ animationDelay: "3s" }}>
-              <div className="relative corner-accent">
-                <div className="relative h-[600px] rounded-2xl overflow-hidden cinematic-shadow group">
-                  <Image src="/images/daria-portrait.jpg" alt="Daria - Fotografin" fill className="object-contain group-hover:scale-110 transition-transform duration-700" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+            <div className={`flex justify-center ${isVisible ? "animate-cinematic-slide-in-right" : ""}`} style={{ animationDelay: "3s" }}>
+              <div className="relative inline-block corner-accent group">
+                <div className="relative overflow-hidden cinematic-shadow">
+                  <Image 
+                    src="/images/daria-portrait.jpg" 
+                    alt="Daria - Fotografin" 
+                    width={400} 
+                    height={600}
+                    className="object-contain group-hover:scale-105 transition-transform duration-700 h-[600px]" 
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
                 </div>
               </div>
             </div>

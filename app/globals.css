@@ -606,8 +606,8 @@
   }
 
   .corner-accent::after {
-    bottom: -2px;
-    right: -2px;
+    bottom: -6px;
+    right: -6px;
     border-left: none;
     border-top: none;
   }
