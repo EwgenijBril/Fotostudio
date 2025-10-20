@@ -5,6 +5,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft, Check, Clock, Camera, Users, Award } from "lucide-react"
 import { useEffect, useState } from "react"
+import PortraitSwiper from "@/components/portrait-swiper"
 
 export default function PortraetPage() {
   const [isVisible, setIsVisible] = useState(false)
@@ -14,15 +15,17 @@ export default function PortraetPage() {
   }, [])
 
   const images = [
-    { id: 1, src: "/professional-business-portrait.png", alt: "Business Porträt" },
-    { id: 2, src: "/creative-portrait.png", alt: "Kreatives Porträt" },
-    { id: 3, src: "/outdoor-portrait.png", alt: "Outdoor Porträt" },
-    { id: 4, src: "/studio-portrait-lighting.png", alt: "Studio Porträt" },
-    { id: 5, src: "/artistic-portrait-bw.png", alt: "Künstlerisches Porträt" },
-    { id: 6, src: "/professional-headshot.png", alt: "Professionelles Headshot" },
-    { id: 7, src: "/natural-light-portrait.png", alt: "Natürliches Licht Porträt" },
-    { id: 8, src: "/fashion-portrait.png", alt: "Fashion Porträt" },
-    { id: 9, src: "/corporate-portrait.png", alt: "Corporate Porträt" },
+    { id: 1, src: "/images/daria-portrait.jpg", alt: "Professionelles Porträt" },
+    { id: 2, src: "/images/partnerin_daria.webp", alt: "Kreatives Porträt" },
+    { id: 3, src: "/professional-business-portrait.png", alt: "Business Porträt" },
+    { id: 4, src: "/creative-portrait.png", alt: "Kreatives Porträt" },
+    { id: 5, src: "/outdoor-portrait.png", alt: "Outdoor Porträt" },
+    { id: 6, src: "/studio-portrait-lighting.png", alt: "Studio Porträt" },
+    { id: 7, src: "/artistic-portrait-bw.png", alt: "Künstlerisches Porträt" },
+    { id: 8, src: "/professional-headshot.png", alt: "Professionelles Headshot" },
+    { id: 9, src: "/natural-light-portrait.png", alt: "Natürliches Licht Porträt" },
+    { id: 10, src: "/fashion-portrait.png", alt: "Fashion Porträt" },
+    { id: 11, src: "/corporate-portrait.png", alt: "Corporate Porträt" },
   ]
 
   return (
@@ -64,33 +67,23 @@ export default function PortraetPage() {
         </div>
       </section>
 
-      {/* Portfolio Gallery */}
+      {/* Portfolio Gallery - 3D Swiper */}
       <section className="py-32 bg-dark relative overflow-hidden">
         <div className="container-cinematic">
           <div
-            className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ${isVisible ? "animate-cinematic-slide-up" : ""}`}
+            className={`text-center mb-16 ${isVisible ? "animate-cinematic-slide-up" : ""}`}
             style={{ animationDelay: "0.4s" }}
           >
-            {images.map((image, index) => (
-              <div 
-                key={image.id} 
-                className={`group cursor-pointer corner-accent ${isVisible ? "animate-cinematic-fade-in" : ""}`}
-                style={{ animationDelay: `${0.6 + index * 0.1}s` }}
-              >
-                <div className="relative aspect-[3/4] overflow-hidden rounded-2xl cinematic-shadow hover-cinematic">
-                  <Image
-                    src={image.src || "/placeholder.svg"}
-                    alt={image.alt}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
-                  <div className="absolute bottom-6 left-6 right-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                    <h3 className="text-lg font-light text-white mb-2 text-cinematic">{image.alt}</h3>
-                  </div>
-                </div>
-              </div>
-            ))}
+            <h2 className="font-light tracking-wide text-white text-cinematic accent-line-gold mb-8">
+              Unsere Porträt-Galerie
+            </h2>
+            <p className="text-white/80 font-light leading-relaxed max-w-3xl mx-auto">
+              Entdecken Sie unsere vielfältigen Porträt-Stile und lassen Sie sich von der Qualität unserer Arbeit überzeugen.
+            </p>
+          </div>
+          
+          <div className={`${isVisible ? "animate-cinematic-fade-in" : ""}`} style={{ animationDelay: "0.6s" }}>
+            <PortraitSwiper images={images} />
           </div>
         </div>
       </section>
