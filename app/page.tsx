@@ -95,10 +95,7 @@ export default function HomePage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
                 </div>
-                <div className="absolute -bottom-6 -right-6 glass-gold rounded-2xl p-6 animate-gold-glow">
-                  <div className="text-2xl font-light text-white">10+</div>
-                  <div className="text-sm text-white/80 tracking-wide">Jahre Erfahrung</div>
-                </div>
+
               </div>
             </div>
           </div>
