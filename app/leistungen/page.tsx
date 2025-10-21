@@ -111,12 +111,7 @@ export default function LeistungenPage() {
   return (
     <div className="pt-24 bg-dark">
       {/* Hero Section */}
-      <section className="py-20 bg-dark-secondary relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-20 left-20 w-64 h-64 border border-gold rounded-full" />
-          <div className="absolute bottom-20 right-20 w-48 h-48 border border-gold rounded-full" />
-        </div>
-
+      <section className="py-32 bg-dark-secondary relative overflow-hidden">
         <div className="container-cinematic text-center relative z-10">
           <div className={`${isVisible ? "animate-cinematic-slide-up" : ""}`}>
             <div className="text-gold text-lg font-light tracking-[0.2em] mb-4 text-dramatic">MEINE EXPERTISE</div>
@@ -136,7 +131,7 @@ export default function LeistungenPage() {
       {/* Services Grid */}
       <section className="py-32 bg-dark relative overflow-hidden">
         <div className="container-cinematic">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
             {services.map((service, index) => (
               <div
                 key={index}
@@ -286,7 +281,7 @@ export default function LeistungenPage() {
             <Button
               asChild
               size="lg"
-              className="px-16 py-8 btn-primary text-xl animate-gold-glow"
+              className="px-12 py-6 btn-primary text-xl animate-gold-glow"
             >
               <Link href="/kontakt"><span>Jetzt Kontakt aufnehmen</span></Link>
             </Button>

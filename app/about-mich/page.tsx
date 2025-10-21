@@ -16,19 +16,13 @@ export default function AboutPage() {
   return (
     <div className="pt-24 bg-dark">
       {/* Hero Section */}
-      <section className="py-20 bg-dark-secondary relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-20 left-20 w-64 h-64 border border-gold rounded-full" />
-          <div className="absolute bottom-20 right-20 w-48 h-48 border border-gold rounded-full" />
-        </div>
-
+      <section className="py-32 bg-dark-secondary relative overflow-hidden">
         <div className="container-cinematic relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <div className={`${isVisible ? "animate-cinematic-slide-in" : ""}`}>
               <div className="text-gold text-lg font-light tracking-[0.2em] mb-4 text-dramatic">ÜBER MICH</div>
               <h1 className="font-light tracking-wide mb-8 text-white text-cinematic accent-line-gold">
-                Willkommen in meiner
-                <span className="block text-gold text-glow">Fotowelt</span>
+                Willkommen in meiner Fotowelt
               </h1>
               <p className="text-white/90 mb-8 font-light leading-relaxed">
                 Hallo! Mein Name ist Daria und ich bin eine leidenschaftliche Fotografin. Ich brenne dafür, einzigartige
@@ -57,19 +51,17 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <div
-              className={`${isVisible ? "animate-cinematic-slide-in-right" : ""}`}
-              style={{ animationDelay: "0.3s" }}
-            >
-              <div className="relative corner-accent">
-                <div className="relative h-[700px] rounded-2xl overflow-hidden cinematic-shadow hover-cinematic">
-                  <Image
-                    src="/images/daria-portrait.jpg"
-                    alt="Daria - Leidenschaftliche Fotografin"
-                    fill
-                    className="object-contain"
+            <div className={`flex justify-center ${isVisible ? "animate-cinematic-slide-in-right" : ""}`} style={{ animationDelay: "3s" }}>
+              <div className="relative inline-block corner-accent group">
+                <div className="relative overflow-hidden cinematic-shadow">
+                  <Image 
+                    src="/images/FrontDaria.png" 
+                    alt="Daria - Fotografin" 
+                    width={512} 
+                    height={600}
+                    className="object-cover group-hover:scale-105 transition-transform duration-700 h-[600px]" 
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
                 </div>
               </div>
             </div>
@@ -149,13 +141,14 @@ export default function AboutPage() {
             ].map((service, index) => (
               <div
                 key={service.title}
-                className={`text-center glass-dark rounded-2xl p-8 hover-gold-lift ${
+                className={`group text-center glass-dark rounded-2xl p-8 hover-gold-lift ${
                   isVisible ? "animate-cinematic-slide-up" : ""
                 }`}
                 style={{ animationDelay: `${2.4 + index * 0.2}s` }}
               >
-                <div className="w-16 h-16 gradient-gold rounded-full flex items-center justify-center mx-auto mb-6">
-                  <service.icon className="h-8 w-8 text-black" />
+                <div className="relative w-12 h-12 mx-auto mb-6 border border-gold/30 rounded-lg flex items-center justify-center group-hover:border-gold/60 transition-all duration-500">
+                  <service.icon className="h-6 w-6 text-gold/70 stroke-[1.5] group-hover:text-gold/90 transition-colors duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-gold/5 to-transparent rounded-lg group-hover:from-gold/10 transition-all duration-500" />
                 </div>
                 <h3 className="text-xl font-light mb-4 text-white text-cinematic">{service.title}</h3>
                 <p className="text-white/70 font-light leading-relaxed">{service.description}</p>

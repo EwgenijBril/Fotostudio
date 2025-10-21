@@ -71,19 +71,6 @@ export function BrickGallery({ images, isVisible, onImageClick }: BrickGalleryPr
       </div>
 
       <div className="container-cinematic relative z-10">
-        {/* Заголовок */}
-        <div className="text-center mb-16">
-          <div className="inline-block">
-            <div className="text-gold text-sm font-light tracking-[0.3em] mb-3 text-dramatic uppercase">
-              Кирпичная галерея
-            </div>
-            <h2 className="text-4xl font-light text-white mb-4 text-cinematic">
-              Семейная кладка воспоминаний
-            </h2>
-            <div className="h-0.5 w-64 mx-auto bg-gradient-to-r from-transparent via-gold to-transparent" />
-          </div>
-        </div>
-
         {/* Brick Layout */}
         <div className="brick-container">
           {rows.map((row, rowIndex) => (
@@ -161,21 +148,6 @@ export function BrickGallery({ images, isVisible, onImageClick }: BrickGalleryPr
               })}
             </div>
           ))}
-        </div>
-
-        {/* Информационная панель */}
-        <div className="text-center mt-16">
-          <div className="flex items-center justify-center gap-8 text-white/50 text-xs">
-            <div className="flex items-center gap-2">
-              <div className="w-4 h-4 border border-gold/50 rounded" />
-              <span>{rows.length} рядов</span>
-            </div>
-            <div className="w-px h-4 bg-white/20" />
-            <div className="flex items-center gap-2">
-              <div className="w-4 h-4 bg-gold/30 rounded" />
-              <span>{images.length} кирпичей</span>
-            </div>
-          </div>
         </div>
       </div>
     </div>

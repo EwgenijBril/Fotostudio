@@ -797,32 +797,31 @@
   }
 
   .hover-gold-lift {
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     position: relative;
     overflow: hidden;
   }
 
   .hover-gold-lift:hover {
-    transform: translateY(-6px) scale(1.02);
-    box-shadow: 0 15px 35px rgba(255, 193, 7, 0.4), 0 8px 20px rgba(255, 140, 0, 0.3);
+    transform: translateY(-4px);
+    border-color: rgba(212, 175, 55, 0.3);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(212, 175, 55, 0.1);
   }
 
-  .hover-gold-lift::after {
+  .hover-gold-lift::before {
     content: "";
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
-    transition: all 0.6s ease;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.5), transparent);
+    opacity: 0;
+    transition: opacity 0.5s ease;
   }
 
-  .hover-gold-lift:hover::after {
-    width: 300px;
-    height: 300px;
+  .hover-gold-lift:hover::before {
+    opacity: 1;
   }
 
   /* Typography */

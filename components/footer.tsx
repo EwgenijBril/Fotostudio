@@ -13,11 +13,6 @@ export function Footer() {
 
   return (
     <footer className="bg-dark-secondary border-t border-t-gray-600 border-gold/20 relative overflow-hidden">
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-10 left-10 w-32 h-32 border border-gold rounded-full" />
-        <div className="absolute bottom-10 right-10 w-24 h-24 border border-gold rounded-full" />
-      </div>
-
       <div className="container-cinematic py-16 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 pt-10">
           <div className={`col-span-1 md:col-span-2 ${isVisible ? "animate-cinematic-slide-in" : ""}`}>

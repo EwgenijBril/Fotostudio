@@ -38,7 +38,7 @@ export function Navigation() {
           <Link href="/" className="group relative">
             <div className="flex items-center">
                <img
-                     src="/images/partnerin_daria.webp"
+                     src="android-chrome-512x512.png"
                      alt="partnerin_daria"
                      className="h-20 w-20 ml-3 object-contain filter grayscale transition-all duration-300 group-hover:grayscale-0 group-hover:scale-105"
                      loading="lazy"

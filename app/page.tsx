@@ -20,7 +20,7 @@ export default function HomePage() {
         {/* Background with cinematic overlay */}
         <div className="absolute inset-0">
           <Image
-            src="/photographer-studio-soft-lighting.png"
+            src="/hero-section.jpg"
             alt="Fotograf Studio"
             fill
             className="object-cover opacity-30"
@@ -29,25 +29,17 @@ export default function HomePage() {
           <div className="absolute inset-0 gradient-overlay" />
         </div>
 
-        {/* Floating elements */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-20 left-20 w-2 h-2 bg-gold rounded-full animate-pulse opacity-60" />
-          <div className="absolute top-40 right-32 w-1 h-1 bg-gold-light rounded-full animate-pulse opacity-80" />
-          <div className="absolute bottom-32 left-40 w-3 h-3 bg-gold rounded-full animate-pulse opacity-40" />
-          <div className="absolute bottom-20 right-20 w-1 h-1 bg-gold-light rounded-full animate-pulse opacity-70" />
-        </div>
-
         <div className="relative z-20 container-cinematic mt-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center py-32 lg:pb-14">
             {/* Left content */}
-            <div className="space-y-8 pt-56">
+            <div className="space-y-8">
               <div className={`${isVisible ? "animate-cinematic-slide-in" : ""}`}>
                 <div className="text-gold text-lg font-light tracking-[0.2em] mb-4 text-dramatic">
                   PROFESSIONELLE FOTOGRAFIE
                 </div>
                 <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-light tracking-wider text-white text-cinematic leading-none">
-                  <span className="block animate-text-reveal text-3xl">DARIA</span>
-                  <span className="block text-gold text-glow text-3xl" style={{ animationDelay: "0.5s" }}>
+                  <span className="block animate-text-reveal text-5xl sm:text-8xl">DARIA</span>
+                  <span className="block text-gold text-glow text-5xl sm:text-8xl" style={{ animationDelay: "0.5s" }}>
                     FOTO
                   </span>
                 </h1>
@@ -96,7 +88,7 @@ export default function HomePage() {
               <div className="relative corner-accent group">
                 <div className="relative h-[600px] overflow-hidden cinematic-shadow">
                   <Image
-                    src="/professional-photographer-portrait.png"
+                    src="/heroDaria.png"
                     alt="Daria - Professionelle Fotografin"
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-700"
@@ -122,11 +114,6 @@ export default function HomePage() {
 
       {/* Services Section */}
       <section className="py-32 bg-dark-secondary relative overflow-hidden">
-        {/* Background pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-20 left-20 w-64 h-64 border border-gold rounded-full" />
-          <div className="absolute bottom-20 right-20 w-48 h-48 border border-gold rounded-full" />
-        </div>
 
         <div className="container-cinematic relative z-10">
           <div
@@ -172,7 +159,7 @@ export default function HomePage() {
                 className={`group ${isVisible ? service.animation : ""}`}
                 style={{ animationDelay: service.delay }}
               >
-                <div className="relative h-96 mb-8 overflow-hidden rounded-2xl cinematic-shadow corner-accent">
+                <div className="relative h-96 mb-8 overflow-hidden cinematic-shadow corner-accent">
                   <Image
                     src={service.image || "/placeholder.svg"}
                     alt={service.title}
@@ -212,8 +199,7 @@ export default function HomePage() {
             <div className={`${isVisible ? "animate-cinematic-slide-in" : ""}`} style={{ animationDelay: "2.6s" }}>
               <div className="text-gold text-lg font-light tracking-[0.2em] mb-4 text-dramatic">ÜBER MICH</div>
               <h2 className=" font-light tracking-wide text-white text-cinematic accent-line-gold inline-block">
-                Leidenschaft
-                <span className="block text-gold">für Perfektion</span>
+                Leidenschaft für Perfektion
               </h2>
               <p className="text-white/80 mb-12 leading-relaxed font-light mt-8">
                 Seit über einem Jahrzehnt verwandle ich Visionen in unvergessliche Bilder. Jedes Projekt ist eine neue
@@ -259,11 +245,11 @@ export default function HomePage() {
               <div className="relative inline-block corner-accent group">
                 <div className="relative overflow-hidden cinematic-shadow">
                   <Image 
-                    src="/images/daria-portrait.jpg" 
+                    src="/images/FrontDaria.png" 
                     alt="Daria - Fotografin" 
-                    width={400} 
+                    width={512} 
                     height={600}
-                    className="object-contain group-hover:scale-105 transition-transform duration-700 h-[600px]" 
+                    className="object-cover group-hover:scale-105 transition-transform duration-700 h-[600px]" 
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
                 </div>

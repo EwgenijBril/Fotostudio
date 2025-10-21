@@ -66,22 +66,6 @@ export function PuzzleGallery({ images, isVisible, onImageClick }: PuzzleGallery
       </div>
 
       <div className="container-cinematic relative z-10">
-        {/* Заголовок */}
-        <div className="text-center mb-16">
-          <div className="inline-block">
-            <div className="text-gold text-sm font-light tracking-[0.3em] mb-3 text-dramatic uppercase">
-              Репортажная галерея
-            </div>
-            <h2 className="text-4xl font-light text-white mb-4 text-cinematic">
-              Мозаика моментов
-            </h2>
-            <p className="text-white/60 font-light text-sm max-w-2xl mx-auto mb-6">
-              Каждый кадр — часть большой истории, сложенной из мгновений
-            </p>
-            <div className="h-0.5 w-64 mx-auto bg-gradient-to-r from-transparent via-gold to-transparent" />
-          </div>
-        </div>
-
         {/* Puzzle Grid */}
         <div className="puzzle-grid">
           {images.map((image, index) => {
@@ -156,23 +140,6 @@ export function PuzzleGallery({ images, isVisible, onImageClick }: PuzzleGallery
               </div>
             )
           })}
-        </div>
-
-        {/* Статистика */}
-        <div className="text-center mt-16">
-          <div className="flex items-center justify-center gap-8 text-white/50 text-xs">
-            <div className="flex items-center gap-2">
-              <div className="w-4 h-4 border border-gold/50" />
-              <span>{images.length} элементов</span>
-            </div>
-            <div className="w-px h-4 bg-white/20" />
-            <div className="flex items-center gap-2">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="text-gold/50">
-                <path d="M8 1L1 4v6l7 3 7-3V4l-7-3z" stroke="currentColor" strokeWidth="1" fill="none"/>
-              </svg>
-              <span>Нерегулярная сетка</span>
-            </div>
-          </div>
         </div>
       </div>
     </div>

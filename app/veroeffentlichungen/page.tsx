@@ -104,12 +104,7 @@ export default function VeroeffentlichungenPage() {
   return (
     <div className="pt-24 bg-dark">
       {/* Hero Section */}
-      <section className="py-20 bg-dark-secondary relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-20 left-20 w-64 h-64 border border-gold rounded-full" />
-          <div className="absolute bottom-20 right-20 w-48 h-48 border border-gold rounded-full" />
-        </div>
-
+      <section className="py-32 bg-dark-secondary relative overflow-hidden">
         <div className="container-cinematic text-center relative z-10">
           <div className={`${isVisible ? "animate-cinematic-slide-up" : ""}`}>
             <div className="text-gold text-lg font-light tracking-[0.2em] mb-4 text-dramatic">PUBLIKATIONEN</div>
@@ -141,21 +136,23 @@ export default function VeroeffentlichungenPage() {
             {publications.map((pub, index) => (
               <div
                 key={pub.id}
-                className={`absolute ${getSizeClasses(pub.size)} group cursor-pointer ${
+                className={`absolute ${getSizeClasses(pub.size)} group ${
                   isVisible ? "animate-cinematic-fade-in" : ""
                 }`}
                 style={{ ...pub.position, animationDelay: `${index * 0.2}s` }}
               >
-                <div className="relative w-full h-full overflow-hidden rounded-2xl cinematic-shadow hover-cinematic corner-accent">
-                  <Image src={pub.image || "/placeholder.svg"} alt={pub.title} fill className="object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
-                  <div className="absolute bottom-6 left-6 right-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                    <h3 className="text-xl font-light mb-2 text-white text-cinematic">{pub.title}</h3>
-                    <p className="text-white/80 text-sm font-light mb-2">{pub.description}</p>
-                    <p className="text-gold text-xs font-light tracking-wide">{pub.year}</p>
-                  </div>
-                  <div className="absolute top-4 right-4 glass-dark rounded-lg p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <Eye className="h-4 w-4 text-gold" />
+                <div className="relative w-full h-full overflow-visible rounded-2xl cinematic-shadow corner-accent transition-all duration-500 ease-in-out group-hover:scale-[2.5] group-hover:z-50">
+                  <div className="relative w-full h-full overflow-hidden rounded-2xl">
+                    <Image src={pub.image || "/placeholder.svg"} alt={pub.title} fill className="object-cover group-hover:object-contain transition-all duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60 group-hover:opacity-0 transition-opacity duration-500" />
+                    <div className="absolute bottom-6 left-6 right-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 opacity-0 group-hover:opacity-100">
+                      <h3 className="text-xl font-light mb-2 text-white text-cinematic">{pub.title}</h3>
+                      <p className="text-white/80 text-sm font-light mb-2">{pub.description}</p>
+                      <p className="text-gold text-xs font-light tracking-wide">{pub.year}</p>
+                    </div>
+                    <div className="absolute top-4 right-4 glass-dark rounded-lg p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <Eye className="h-4 w-4 text-gold" />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -167,12 +164,12 @@ export default function VeroeffentlichungenPage() {
             {publications.map((pub, index) => (
               <div
                 key={pub.id}
-                className={`group cursor-pointer ${isVisible ? "animate-cinematic-slide-up" : ""}`}
+                className={`group ${isVisible ? "animate-cinematic-slide-up" : ""}`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="relative aspect-[3/4] overflow-hidden rounded-2xl cinematic-shadow hover-cinematic corner-accent">
-                  <Image src={pub.image || "/placeholder.svg"} alt={pub.title} fill className="object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
+                <div className="relative aspect-[3/4] overflow-hidden rounded-2xl cinematic-shadow corner-accent transition-all duration-500 ease-in-out group-hover:scale-105">
+                  <Image src={pub.image || "/placeholder.svg"} alt={pub.title} fill className="object-cover group-hover:object-contain transition-all duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60 group-hover:opacity-0 transition-opacity duration-500" />
                   <div className="absolute bottom-6 left-6 right-6">
                     <h3 className="text-lg font-light mb-2 text-white text-cinematic">{pub.title}</h3>
                     <p className="text-white/80 text-sm font-light mb-2">{pub.description}</p>

@@ -36,12 +36,7 @@ export default function KontaktPage() {
   return (
     <div className="pt-24 bg-dark">
       {/* Hero Section */}
-      <section className="py-20 bg-dark-secondary relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-20 left-20 w-64 h-64 border border-gold rounded-full" />
-          <div className="absolute bottom-20 right-20 w-48 h-48 border border-gold rounded-full" />
-        </div>
-
+      <section className="py-32 bg-dark-secondary relative overflow-hidden">
         <div className="container-cinematic text-center relative z-10">
           <div className={`${isVisible ? "animate-cinematic-slide-up" : ""}`}>
             <div className="text-gold text-lg font-light tracking-[0.2em] mb-4 text-dramatic">KONTAKT</div>
@@ -65,9 +60,9 @@ export default function KontaktPage() {
             <div className={`${isVisible ? "animate-cinematic-slide-in" : ""}`} style={{ animationDelay: "0.4s" }}>
               <div className="glass-dark rounded-2xl p-8 cinematic-shadow">
                 <div className="text-gold text-lg font-light tracking-[0.2em] mb-4 text-dramatic">NACHRICHT SENDEN</div>
-                <h2 className="font-light tracking-wide mb-8 text-white text-cinematic accent-line-gold">
+                <h3 className="font-light tracking-wide mb-8 text-white text-cinematic accent-line-gold">
                   Projekt anfragen
-                </h2>
+                </h3>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -188,9 +183,9 @@ export default function KontaktPage() {
                 <div className="text-gold text-lg font-light tracking-[0.2em] mb-4 text-dramatic">
                   KONTAKTINFORMATIONEN
                 </div>
-                <h2 className="font-light tracking-wide mb-8 text-white text-cinematic accent-line-gold">
+                <h3 className="font-light tracking-wide mb-8 text-white text-cinematic accent-line-gold">
                   Erreichen Sie mich
-                </h2>
+                </h3>
 
                 <div className="space-y-8 mb-12">
                   {[
@@ -201,22 +196,10 @@ export default function KontaktPage() {
                       href: "mailto:d.golovchenko@gmx.de",
                     },
                     {
-                      icon: Phone,
-                      title: "Telefon",
-                      content: "+49 152 09029117",
-                      href: "tel:+4915209029117",
-                    },
-                    {
                       icon: MessageCircle,
                       title: "WhatsApp",
                       content: "+49 152 09029117",
                       href: "https://wa.me/4915209029117",
-                    },
-                    {
-                      icon: MapPin,
-                      title: "Adresse",
-                      content: "Kaufhausstraße 24\n72250 Freudenstadt\nBaden-Württemberg\nDeutschland",
-                      href: null,
                     },
                     {
                       icon: Clock,
@@ -234,7 +217,7 @@ export default function KontaktPage() {
                     >
                       <contact.icon className="h-6 w-6 text-gold mt-1 flex-shrink-0" />
                       <div>
-                        <h3 className="font-light mb-2 text-white text-cinematic">{contact.title}</h3>
+                        <h4 className="font-light mb-2 text-white text-cinematic">{contact.title}</h4>
                         {contact.href ? (
                           <a
                             href={contact.href}
@@ -274,7 +257,7 @@ export default function KontaktPage() {
             </h2>
             <div className="glass-dark rounded-2xl p-8 max-w-4xl mx-auto">
               <p className="text-xl text-white/90 mb-4 font-light">
-                Ich bin in <span className="text-gold font-medium">Freudenstadt</span> und der umliegenden Region tätig.
+                Ich bin in <span className="text-gold font-medium text-xl">Freudenstadt</span> und der umliegenden Region tätig.
               </p>
               <p className="text-white/70 font-light leading-relaxed">
                 * Der angegebene Preis gilt für Freudenstadt und die umliegende Region innerhalb von 50 km.

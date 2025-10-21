@@ -71,19 +71,6 @@ export function StaggeredGallery({ images, isVisible, onImageClick }: StaggeredG
   return (
     <div className="py-32 bg-dark relative overflow-hidden">
       <div className="container-cinematic">
-        {/* Заголовок секции */}
-        <div 
-          className={`text-center mb-16 ${isVisible ? "animate-cinematic-slide-up" : ""}`}
-          style={{ animationDelay: "0.2s" }}
-        >
-          <div className="text-gold text-sm font-light tracking-[0.2em] mb-4 text-dramatic uppercase">
-            Food Photography
-          </div>
-          <h2 className="font-light tracking-wide text-white text-cinematic accent-line-gold inline-block">
-            Наши работы
-          </h2>
-        </div>
-
         {/* Staggered Gallery */}
         <div 
           ref={galleryRef}
@@ -141,7 +128,7 @@ export function StaggeredGallery({ images, isVisible, onImageClick }: StaggeredG
                         
                         {/* Номер изображения */}
                         <div className="absolute top-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                          <div className="w-8 h-8 gradient-gold rounded-full flex items-center justify-center text-black text-xs font-medium shadow-lg">
+                          <div className="w-8 h-8 border border-gold/40 rounded-lg flex items-center justify-center text-gold text-xs font-medium backdrop-blur-sm bg-black/30">
                             {image.id}
                           </div>
                         </div>
@@ -206,7 +193,7 @@ export function StaggeredGallery({ images, isVisible, onImageClick }: StaggeredG
                         
                         {/* Номер изображения */}
                         <div className="absolute top-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                          <div className="w-8 h-8 gradient-gold rounded-full flex items-center justify-center text-black text-xs font-medium shadow-lg">
+                          <div className="w-8 h-8 border border-gold/40 rounded-lg flex items-center justify-center text-gold text-xs font-medium backdrop-blur-sm bg-black/30">
                             {image.id}
                           </div>
                         </div>

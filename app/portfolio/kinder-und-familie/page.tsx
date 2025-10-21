@@ -45,12 +45,7 @@ export default function KinderUndFamiliePage() {
   return (
     <div className="pt-24 bg-dark">
       {/* Hero Section */}
-      <section className="py-20 bg-dark-secondary relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-20 left-20 w-64 h-64 border border-gold rounded-full" />
-          <div className="absolute bottom-20 right-20 w-48 h-48 border border-gold rounded-full" />
-        </div>
-
+      <section className="py-32 bg-dark-secondary relative overflow-hidden">
         <div className="container-cinematic relative z-10">
           <div className={`mb-8 ${isVisible ? "animate-cinematic-slide-in" : ""}`}>
             <div className="text-gold text-lg font-light tracking-[0.2em] mb-4 text-dramatic">PORTFOLIO</div>
@@ -103,8 +98,8 @@ export default function KinderUndFamiliePage() {
                   "Hochwertige Bildbearbeitung inklusive",
                 ].map((item, index) => (
                   <li key={index} className="flex items-start gap-4">
-                    <div className="w-8 h-8 gradient-gold rounded-full flex items-center justify-center mt-1 flex-shrink-0">
-                      <Check className="h-4 w-4 text-black" />
+                    <div className="w-6 h-6 border border-gold/40 rounded-md flex items-center justify-center mt-1 flex-shrink-0 bg-gold/5">
+                      <Check className="h-4 w-4 text-gold stroke-[2]" />
                     </div>
                     <span className="font-light">{item}</span>
                   </li>
@@ -122,14 +117,15 @@ export default function KinderUndFamiliePage() {
                 ].map((pkg, index) => (
                   <div
                     key={pkg.title}
-                    className={`glass-dark rounded-2xl p-8 hover-gold-lift ${
+                    className={`group glass-dark rounded-2xl p-8 hover-gold-lift ${
                       isVisible ? "animate-cinematic-fade-in" : ""
                     }`}
                     style={{ animationDelay: `${2.0 + index * 0.2}s` }}
                   >
                     <div className="flex items-center gap-4 mb-4">
-                      <div className="w-12 h-12 gradient-gold rounded-xl flex items-center justify-center">
-                        <Heart className="h-6 w-6 text-black" />
+                      <div className="relative w-12 h-12 border border-gold/30 rounded-lg flex items-center justify-center group-hover:border-gold/60 transition-all duration-500">
+                        <Heart className="h-6 w-6 text-gold/70 stroke-[1.5] group-hover:text-gold/90 transition-colors duration-500" />
+                        <div className="absolute inset-0 bg-gradient-to-br from-gold/5 to-transparent rounded-lg group-hover:from-gold/10 transition-all duration-500" />
                       </div>
                       <div>
                         <h3 className="text-xl font-light text-white text-cinematic">{pkg.title}</h3>
@@ -187,13 +183,14 @@ export default function KinderUndFamiliePage() {
             ].map((stat, index) => (
               <div
                 key={stat.title}
-                className={`text-center glass-dark rounded-2xl p-8 hover-gold-lift ${
+                className={`group text-center glass-dark rounded-2xl p-8 hover-gold-lift ${
                   isVisible ? "animate-cinematic-slide-up" : ""
                 }`}
                 style={{ animationDelay: `${2.8 + index * 0.2}s` }}
               >
-                <div className="w-16 h-16 gradient-gold rounded-full flex items-center justify-center mx-auto mb-6">
-                  <stat.icon className="h-8 w-8 text-black" />
+                <div className="relative w-16 h-16 border border-gold/30 rounded-lg flex items-center justify-center mx-auto mb-6 group-hover:border-gold/60 transition-all duration-500">
+                  <stat.icon className="h-7 w-7 text-gold/70 stroke-[1.5] group-hover:text-gold/90 transition-colors duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-gold/5 to-transparent rounded-lg group-hover:from-gold/10 transition-all duration-500" />
                 </div>
                 <div className="text-4xl font-light text-gold mb-4 text-cinematic">{stat.number}</div>
                 <h3 className="text-xl font-light mb-4 text-white text-cinematic">{stat.title}</h3>
@@ -226,7 +223,7 @@ export default function KinderUndFamiliePage() {
               <Button
                 asChild
                 size="lg"
-                className="px-16 py-8 gradient-gold text-black hover:gradient-gold-dark transition-all duration-500 hover-gold-lift text-xl font-medium tracking-wide animate-gold-glow"
+                className="px-16 py-6 btn-primary text-xl"
               >
                 <Link href="/kontakt"><span>Familien-Shooting buchen</span></Link>
               </Button>
