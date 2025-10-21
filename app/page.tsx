@@ -30,11 +30,11 @@ export default function HomePage() {
         </div>
 
         <div className="relative z-20 container-cinematic mt-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center py-32 lg:pb-14">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center py-40 lg:pb-14">
             {/* Left content */}
             <div className="space-y-8">
               <div className={`${isVisible ? "animate-cinematic-slide-in" : ""}`}>
-                <div className="text-gold text-lg font-light tracking-[0.2em] mb-4 text-dramatic">
+                <div className="text-gold text-lg font-light tracking-[0.2em] mb-4 text-dramatic pt-16">
                   PROFESSIONELLE FOTOGRAFIE
                 </div>
                 <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-light tracking-wider text-white text-cinematic leading-none">
