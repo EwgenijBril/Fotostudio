@@ -16,7 +16,7 @@ export default function LeistungenPage() {
   const services = [
     {
       icon: Camera,
-      title: "Porträt Fotografie",
+      title: "Individual Shooting",
       description: "Professionelle Porträts für Business, Bewerbungen oder persönliche Zwecke",
       image: "/images/services/portrait-service.avif",
       features: [
@@ -37,6 +37,20 @@ export default function LeistungenPage() {
       price: "ab 250€",
       link: "/portfolio/content-shooting",
     },
+     {
+      icon: Baby,
+      title: "Kinder & Familie",
+      description: "Liebevolle Familienporträts und Kinderfotos in entspannter Atmosphäre",
+      image: "/images/services/family-service.avif",
+      features: [
+        "Natürliche Familienmomente",
+        "Kinderfreundliche Umgebung",
+        "Geduld und Einfühlungsvermögen",
+        "Spielerische Herangehensweise",
+      ],
+      price: "ab 200€",
+      link: "/portfolio/kinder-und-familie",
+    },
     {
       icon: Users,
       title: "Kreative Shootings",
@@ -50,20 +64,6 @@ export default function LeistungenPage() {
       ],
       price: "ab 300€",
       link: "/portfolio/kreative-shooting",
-    },
-    {
-      icon: Baby,
-      title: "Kinder & Familie",
-      description: "Liebevolle Familienporträts und Kinderfotos in entspannter Atmosphäre",
-      image: "/images/services/family-service.avif",
-      features: [
-        "Natürliche Familienmomente",
-        "Kinderfreundliche Umgebung",
-        "Geduld und Einfühlungsvermögen",
-        "Spielerische Herangehensweise",
-      ],
-      price: "ab 200€",
-      link: "/portfolio/kinder-und-familie",
     },
     {
       icon: FileText,
@@ -93,28 +93,14 @@ export default function LeistungenPage() {
       price: "ab 180€",
       link: "/portfolio/food-foto",
     },
-    {
-      icon: Package,
-      title: "Produkt Fotografie",
-      description: "Hochwertige Produktaufnahmen für E-Commerce und Marketing",
-      features: [
-        "Weißer Hintergrund oder Lifestyle",
-        "Mehrere Perspektiven",
-        "E-Commerce optimiert",
-        "Schnelle Bearbeitung",
-      ],
-      price: "ab 120€",
-      link: "/portfolio/produkt-foto",
-    },
   ]
 
   return (
     <div className="pt-24 bg-dark">
       {/* Hero Section */}
-      <section className="py-32 bg-dark-secondary relative overflow-hidden">
-        <div className="container-cinematic text-center relative z-10">
+      <section className="py-40 bg-dark-secondary relative overflow-hidden">
+        <div className="container-cinematic text-center relative z-10 flex items-center justify-center">
           <div className={`${isVisible ? "animate-cinematic-slide-up" : ""}`}>
-            <div className="text-gold text-lg font-light tracking-[0.2em] mb-4 text-dramatic">MEINE EXPERTISE</div>
             <h1 className="font-light tracking-wide mb-8 text-white text-cinematic accent-line-gold inline-block">
               Leistungen
             </h1>
@@ -144,9 +130,6 @@ export default function LeistungenPage() {
                   <Image src={service.image || "/placeholder.svg"} alt={service.title} fill className="object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
                   <div className="absolute bottom-4 left-4">
-                    <div className="w-12 h-12 glass-gold rounded-xl flex items-center justify-center">
-                      <service.icon className="h-6 w-6 text-white" />
-                    </div>
                   </div>
                   <div className="absolute top-4 right-4">
                     <div className="glass-dark rounded-lg px-4 py-2">

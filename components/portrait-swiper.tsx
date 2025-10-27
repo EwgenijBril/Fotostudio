@@ -57,8 +57,8 @@ export default function PortraitSwiper({ images }: PortraitSwiperProps) {
               <Image
                 src={image.src}
                 alt={image.alt}
-                width={300}
-                height={400}
+                width={400}
+                height={500}
                 className="swiper-image"
               />
             </div>

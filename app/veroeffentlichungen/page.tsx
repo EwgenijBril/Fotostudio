@@ -190,7 +190,6 @@ export default function VeroeffentlichungenPage() {
 
         <div className="container-cinematic text-center relative z-10">
           <div className={`${isVisible ? "animate-cinematic-slide-up" : ""}`} style={{ animationDelay: "1.6s" }}>
-            <div className="text-gold text-lg font-light tracking-[0.2em] mb-6 text-dramatic">ANERKENNUNG</div>
             <h2 className="font-light tracking-wide mb-8 text-cinematic text-glow accent-line-gold inline-block">
               Branchenanerkennung
             </h2>

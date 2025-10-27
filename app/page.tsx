@@ -3,7 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Camera, Heart, Play, Award } from "lucide-react"
+import { Instagram, Facebook} from "lucide-react"
 import { useEffect, useState } from "react"
 
 export default function HomePage() {
@@ -25,77 +25,35 @@ export default function HomePage() {
             fill
             className="object-cover opacity-30"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/30 to-transparent" />
           <div className="absolute inset-0 gradient-overlay" />
         </div>
 
         <div className="relative z-20 container-cinematic mt-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center py-40 lg:pb-14">
-            {/* Left content */}
+          <div className="flex items-center py-40 lg:pb-14">
             <div className="space-y-8">
               <div className={`${isVisible ? "animate-cinematic-slide-in" : ""}`}>
-                <div className="text-gold text-lg font-light tracking-[0.2em] mb-4 text-dramatic pt-16">
-                  PROFESSIONELLE FOTOGRAFIE
+                <div className="flex justify-center space-x-6 py-10">
+                  <a
+                    href="mailto:d.golovchenko@gmx.de"
+                  >
+                    <Facebook className="h-7 w-7 text-gold group-hover:scale-110 transition-transform duration-300" />
+                  </a>
+                  <a
+                    href="tel:+4915209029117"
+                  >
+                    <Instagram className="h-7 w-7 text-gold group-hover:scale-110 transition-transform duration-300" />
+                  </a>
                 </div>
-                <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-light tracking-wider text-white text-cinematic leading-none">
-                  <span className="block animate-text-reveal text-5xl sm:text-8xl">DARIA</span>
-                  <span className="block text-gold text-glow text-5xl sm:text-8xl" style={{ animationDelay: "0.5s" }}>
-                    FOTO
+                <h1 className="text-center  font-light tracking-wider text-white text-cinematic leading-none">
+                  <span className="block animate-text-reveal text-5xl sm:text-8xl">Daria</span>
+                  <span className="block text-glow text-5xl sm:text-8xl" style={{ animationDelay: "0.5s" }}>
+                    Golovchenko
                   </span>
                 </h1>
-              </div>
-
-              <div
-                className={`${isVisible ? "animate-cinematic-slide-in" : ""} accent-line-gold inline-block`}
-                style={{ animationDelay: "0.8s" }}
-              >
-                <p className="text-white/90 font-light leading-relaxed max-w-lg">
-                  Künstlerische Vision trifft auf technische Perfektion. Ich erschaffe zeitlose Bilder, die Geschichten
-                  erzählen.
-                </p>
-              </div>
-
-              <div
-                className={`flex flex-col sm:flex-row gap-6 ${isVisible ? "animate-cinematic-slide-in" : ""}`}
-                style={{ animationDelay: "1.2s" }}
-              >
-                <Button
-                  asChild
-                  size="lg"
-                  className="px-12 py-6 btn-primary text-lg"
-                >
-                  <Link href="/portfolio/portraet">
-                    <span>Portfolio entdecken</span>
-                  </Link>
-                </Button>
-                <Button
-                  asChild
-                  size="lg"
-                  className="px-12 py-6 btn-primary text-lg"
-                >
-                  <Link href="/kontakt">
-                    <span>Projekt starten</span>
-                  </Link>
-                </Button>
-              </div>
-            </div>
-
-            {/* Right content - Image */}
-            <div
-              className={`${isVisible ? "animate-cinematic-slide-in-right" : ""}`}
-              style={{ animationDelay: "0.6s" }}
-            >
-              <div className="relative corner-accent group">
-                <div className="relative h-[600px] overflow-hidden cinematic-shadow">
-                  <Image
-                    src="/heroDaria.png"
-                    alt="Daria - Professionelle Fotografin"
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-                </div>
-
+                <h2 className="block text-center text-gold font-light tracking-[0.2em] my-4 text-dramatic">
+                  FOTOGRAFIE
+                </h2>
               </div>
             </div>
           </div>
@@ -109,7 +67,74 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Services Section */}
+      {/* About Section */}
+      <section className="py-32 bg-dark relative overflow-hidden">
+        <div className="container-cinematic">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center max-w-7xl mx-auto">
+            <div className={`${isVisible ? "animate-cinematic-slide-in" : ""}`} style={{ animationDelay: "2.6s" }}>
+              <div className="text-gold text-lg font-light tracking-[0.2em] mb-4 text-dramatic">ÜBER MICH</div>
+              <h2 className=" font-light tracking-wide text-white text-cinematic accent-line-gold inline-block">
+                Leidenschaft für Perfektion
+              </h2>
+              <p className="text-white/80 mb-12 leading-relaxed font-light mt-8">
+                Seit über einem Jahrzehnt verwandle ich Visionen in unvergessliche Bilder. Jedes Projekt ist eine neue
+                Geschichte, die darauf wartet, erzählt zu werden.
+              </p>
+
+              <div className="grid grid-cols-3 gap-3 mb-12">
+                {[
+                  { src: "/professional-portrait.png", alt: "Portrait Foto" },
+                  { src: "/creative-content-photography.png", alt: "Content Foto" },
+                  { src: "/happy-family-outdoors.png", alt: "Familie Foto" },
+                ].map((photo, index) => (
+                  <div
+                    key={photo.alt}
+                    className={`group cursor-pointer ${
+                      isVisible ? "animate-cinematic-fade-in" : ""
+                    }`}
+                    style={{ animationDelay: `${2.8 + index * 0.2}s` }}
+                  >
+                    <div className="relative aspect-[16/10] overflow-hidden cinematic-shadow hover-cinematic">
+                      <Image
+                        src={photo.src}
+                        alt={photo.alt}
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-700"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <Button
+                asChild
+                size="lg"
+                className="px-12 py-6 btn-primary text-lg"
+              >
+                <Link href="/about-mich"><span>Meine Geschichte</span></Link>
+              </Button>
+            </div>
+
+            <div className={`flex justify-center ${isVisible ? "animate-cinematic-slide-in-right" : ""}`} style={{ animationDelay: "3s" }}>
+              <div className="relative inline-block corner-accent group">
+                <div className="relative overflow-hidden cinematic-shadow">
+                  <Image 
+                    src="/heroDaria.png" 
+                    alt="Daria - Fotografin" 
+                    width={512} 
+                    height={600}
+                    className="object-cover group-hover:scale-105 transition-transform duration-700 h-[600px]" 
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+       {/* Services Section */}
       <section className="py-32 bg-dark-secondary relative overflow-hidden">
 
         <div className="container-cinematic relative z-10">
@@ -185,73 +210,6 @@ export default function HomePage() {
             >
               <Link href="/leistungen"><span>Alle Leistungen entdecken</span></Link>
             </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section className="py-32 bg-dark relative overflow-hidden">
-        <div className="container-cinematic">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center max-w-7xl mx-auto">
-            <div className={`${isVisible ? "animate-cinematic-slide-in" : ""}`} style={{ animationDelay: "2.6s" }}>
-              <div className="text-gold text-lg font-light tracking-[0.2em] mb-4 text-dramatic">ÜBER MICH</div>
-              <h2 className=" font-light tracking-wide text-white text-cinematic accent-line-gold inline-block">
-                Leidenschaft für Perfektion
-              </h2>
-              <p className="text-white/80 mb-12 leading-relaxed font-light mt-8">
-                Seit über einem Jahrzehnt verwandle ich Visionen in unvergessliche Bilder. Jedes Projekt ist eine neue
-                Geschichte, die darauf wartet, erzählt zu werden.
-              </p>
-
-              <div className="grid grid-cols-3 gap-3 mb-12">
-                {[
-                  { src: "/professional-portrait.png", alt: "Portrait Foto" },
-                  { src: "/creative-content-photography.png", alt: "Content Foto" },
-                  { src: "/happy-family-outdoors.png", alt: "Familie Foto" },
-                ].map((photo, index) => (
-                  <div
-                    key={photo.alt}
-                    className={`group cursor-pointer ${
-                      isVisible ? "animate-cinematic-fade-in" : ""
-                    }`}
-                    style={{ animationDelay: `${2.8 + index * 0.2}s` }}
-                  >
-                    <div className="relative aspect-[16/10] overflow-hidden cinematic-shadow hover-cinematic">
-                      <Image
-                        src={photo.src}
-                        alt={photo.alt}
-                        fill
-                        className="object-cover group-hover:scale-110 transition-transform duration-700"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <Button
-                asChild
-                size="lg"
-                className="px-12 py-6 btn-primary text-lg"
-              >
-                <Link href="/about-mich"><span>Meine Geschichte</span></Link>
-              </Button>
-            </div>
-
-            <div className={`flex justify-center ${isVisible ? "animate-cinematic-slide-in-right" : ""}`} style={{ animationDelay: "3s" }}>
-              <div className="relative inline-block corner-accent group">
-                <div className="relative overflow-hidden cinematic-shadow">
-                  <Image 
-                    src="/images/FrontDaria.png" 
-                    alt="Daria - Fotografin" 
-                    width={512} 
-                    height={600}
-                    className="object-cover group-hover:scale-105 transition-transform duration-700 h-[600px]" 
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>

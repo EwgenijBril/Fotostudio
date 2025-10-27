@@ -29,29 +29,34 @@ export default function AboutPage() {
                 Momente festzuhalten und Ihre Geschichte visuell zum Leben zu erwecken.
               </p>
 
-              <div className="grid grid-cols-2 gap-8 mb-12">
+              <div className="grid grid-cols-3 gap-3 mb-12">
                 {[
-                  { icon: Camera, label: "10+ Jahre", sublabel: "Erfahrung" },
-                  { icon: Users, label: "500+", sublabel: "Kunden" },
-                  { icon: Award, label: "Ausgezeichnet", sublabel: "Qualität" },
-                  { icon: Heart, label: "Mit Herz", sublabel: "& Leidenschaft" },
-                ].map((stat, index) => (
+                  { src: "/professional-portrait.png", alt: "Portrait Foto" },
+                  { src: "/creative-content-photography.png", alt: "Content Foto" },
+                  { src: "/happy-family-outdoors.png", alt: "Familie Foto" },
+                ].map((photo, index) => (
                   <div
-                    key={stat.label}
-                    className={`glass-dark rounded-2xl p-6 hover-gold-lift ${
+                    key={photo.alt}
+                    className={`group cursor-pointer ${
                       isVisible ? "animate-cinematic-fade-in" : ""
                     }`}
-                    style={{ animationDelay: `${0.4 + index * 0.2}s` }}
+                    style={{ animationDelay: `${index * 0.5}s` }}
                   >
-                    <stat.icon className="h-8 w-8 text-gold mb-3" />
-                    <div className="text-lg font-light text-white mb-1">{stat.label}</div>
-                    <div className="text-sm text-white/60 font-light">{stat.sublabel}</div>
+                    <div className="relative aspect-[16/10] overflow-hidden cinematic-shadow hover-cinematic">
+                      <Image
+                        src={photo.src}
+                        alt={photo.alt}
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-700"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
+                    </div>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className={`flex justify-center ${isVisible ? "animate-cinematic-slide-in-right" : ""}`} style={{ animationDelay: "3s" }}>
+            <div className={`flex justify-center ${isVisible ? "animate-cinematic-slide-in-right" : ""}`} style={{ animationDelay: "0.5s" }}>
               <div className="relative inline-block corner-accent group">
                 <div className="relative overflow-hidden cinematic-shadow">
                   <Image 
@@ -94,7 +99,7 @@ export default function AboutPage() {
                 className={`text-white/80 leading-relaxed font-light ${
                   isVisible ? "animate-cinematic-fade-in" : ""
                 }`}
-                style={{ animationDelay: `${1.4 + index * 0.2}s` }}
+                style={{ animationDelay: `${index * 0.2}s` }}
               >
                 {text}
               </p>
@@ -110,7 +115,6 @@ export default function AboutPage() {
             className={`text-center mb-20 ${isVisible ? "animate-cinematic-slide-up" : ""}`}
             style={{ animationDelay: "2.2s" }}
           >
-            <div className="text-gold text-lg font-light tracking-[0.2em] mb-4 text-dramatic">MEINE EXPERTISE</div>
             <h2 className="font-light tracking-wide text-white text-cinematic accent-line-gold inline-block">
               Was mich auszeichnet
             </h2>

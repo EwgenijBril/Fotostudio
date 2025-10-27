@@ -36,13 +36,12 @@ export default function KontaktPage() {
   return (
     <div className="pt-24 bg-dark">
       {/* Hero Section */}
-      <section className="py-32 bg-dark-secondary relative overflow-hidden">
+      <section className="py-40 bg-dark-secondary relative overflow-hidden">
         <div className="container-cinematic text-center relative z-10">
           <div className={`${isVisible ? "animate-cinematic-slide-up" : ""}`}>
             <div className="text-gold text-lg font-light tracking-[0.2em] mb-4 text-dramatic">KONTAKT</div>
             <h1 className="font-light tracking-wide mb-8 text-white text-cinematic accent-line-gold inline-block">
-              Lassen Sie uns
-              <span className="block text-gold text-glow">sprechen</span>
+              Lassen Sie uns sprechen
             </h1>
             <p className="text-white/90 max-w-4xl mx-auto font-light leading-relaxed">
               Lassen Sie uns über Ihr nächstes Fotoprojekt sprechen. Ich freue mich auf Ihre Nachricht und berate Sie
@@ -55,7 +54,7 @@ export default function KontaktPage() {
       {/* Contact Section */}
       <section className="py-32 bg-dark relative overflow-hidden">
         <div className="container-cinematic">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl mx-auto">
             {/* Contact Form */}
             <div className={`${isVisible ? "animate-cinematic-slide-in" : ""}`} style={{ animationDelay: "0.4s" }}>
               <div className="glass-dark rounded-2xl p-8 cinematic-shadow">
@@ -128,25 +127,6 @@ export default function KontaktPage() {
                       </Select>
                     </div>
                   </div>
-
-                  <div>
-                    <Label htmlFor="budget" className="text-white/80 font-light mb-2 block">
-                      Budget
-                    </Label>
-                    <Select onValueChange={(value) => handleChange("budget", value)}>
-                      <SelectTrigger className="bg-dark-tertiary border-gold/30 text-white focus:border-gold transition-colors duration-300">
-                        <SelectValue placeholder="Bitte wählen" />
-                      </SelectTrigger>
-                      <SelectContent className="bg-dark-tertiary border-gold/30">
-                        <SelectItem value="unter-200">Unter 200€</SelectItem>
-                        <SelectItem value="200-500">200€ - 500€</SelectItem>
-                        <SelectItem value="500-1000">500€ - 1.000€</SelectItem>
-                        <SelectItem value="1000-2000">1.000€ - 2.000€</SelectItem>
-                        <SelectItem value="ueber-2000">Über 2.000€</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-
                   <div>
                     <Label htmlFor="message" className="text-white/80 font-light mb-2 block">
                       Nachricht *
@@ -201,12 +181,6 @@ export default function KontaktPage() {
                       content: "+49 152 09029117",
                       href: "https://wa.me/4915209029117",
                     },
-                    {
-                      icon: Clock,
-                      title: "Verfügbarkeit",
-                      content: "Mo - Fr: 9:00 - 18:00\nSa: 10:00 - 16:00\nSo: Nach Vereinbarung",
-                      href: null,
-                    },
                   ].map((contact, index) => (
                     <div
                       key={contact.title}
@@ -251,7 +225,6 @@ export default function KontaktPage() {
       <section className="py-32 bg-dark-secondary relative overflow-hidden">
         <div className="container-cinematic text-center">
           <div className={`${isVisible ? "animate-cinematic-slide-up" : ""}`} style={{ animationDelay: "1.4s" }}>
-            <div className="text-gold text-lg font-light tracking-[0.2em] mb-4 text-dramatic">SERVICE GEBIET</div>
             <h2 className="font-light tracking-wide mb-8 text-white text-cinematic accent-line-gold inline-block">
               Mein Einzugsgebiet
             </h2>

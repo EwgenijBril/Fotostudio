@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { Camera, Mail, Phone, MapPin } from "lucide-react"
+import {Phone, Facebook, Instagram } from "lucide-react"
 import { useEffect, useState } from "react"
 
 export function Footer() {
@@ -33,7 +33,7 @@ export function Footer() {
                 href="mailto:d.golovchenko@gmx.de"
                 className="w-12 h-12 glass-dark rounded-xl flex items-center justify-center hover:glass-gold transition-all duration-300 group"
               >
-                <Mail className="h-5 w-5 text-gold group-hover:scale-110 transition-transform duration-300" />
+                <Facebook className="h-5 w-5 text-gold group-hover:scale-110 transition-transform duration-300" />
               </a>
               <a
                 href="tel:+4915209029117"
@@ -45,7 +45,7 @@ export function Footer() {
                 href="https://wa.me/4915209029117"
                 className="w-12 h-12 glass-dark rounded-xl flex items-center justify-center hover:glass-gold transition-all duration-300 group"
               >
-                <MapPin className="h-5 w-5 text-gold group-hover:scale-110 transition-transform duration-300" />
+                <Instagram className="h-5 w-5 text-gold group-hover:scale-110 transition-transform duration-300" />
               </a>
             </div>
           </div>
