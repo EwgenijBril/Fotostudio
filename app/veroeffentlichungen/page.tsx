@@ -3,7 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Award, Star, Eye } from "lucide-react"
+import { Award, Star } from "lucide-react"
 import { useEffect, useState } from "react"
 
 export default function VeroeffentlichungenPage() {
@@ -13,6 +13,7 @@ export default function VeroeffentlichungenPage() {
     setIsVisible(true)
   }, [])
 
+  // Данные оставил как есть — size/position больше не используются
   const publications = [
     {
       id: 1,
@@ -23,14 +24,15 @@ export default function VeroeffentlichungenPage() {
       size: "large",
       position: { top: "10%", left: "5%" },
     },
+
     {
       id: 2,
-      image: "/images/publications/raamat-magazine.avif",
-      title: "RAAMAT Magazine",
-      description: "Oktober 2021 Issue",
-      year: "2021",
-      size: "medium",
-      position: { top: "15%", right: "10%" },
+      image: "/images/publications/creative-layout.avif",
+      title: "Creative Layout",
+      description: "Artistic Direction",
+      year: "2023",
+      size: "small",
+      position: { bottom: "10%", left: "40%" },
     },
     {
       id: 3,
@@ -79,27 +81,14 @@ export default function VeroeffentlichungenPage() {
     },
     {
       id: 8,
-      image: "/images/publications/creative-layout.avif",
-      title: "Creative Layout",
-      description: "Artistic Direction",
-      year: "2023",
-      size: "small",
-      position: { bottom: "10%", left: "40%" },
+      image: "/images/publications/raamat-magazine.avif",
+      title: "RAAMAT Magazine",
+      description: "Oktober 2021 Issue",
+      year: "2021",
+      size: "medium",
+      position: { top: "15%", right: "10%" },
     },
   ]
-
-  const getSizeClasses = (size: string) => {
-    switch (size) {
-      case "large":
-        return "w-80 h-96"
-      case "medium":
-        return "w-64 h-80"
-      case "small":
-        return "w-48 h-60"
-      default:
-        return "w-64 h-80"
-    }
-  }
 
   return (
     <div className="pt-24 bg-dark">
@@ -129,52 +118,65 @@ export default function VeroeffentlichungenPage() {
       </section>
 
       {/* Publications Gallery */}
-      <section className="py-32 bg-dark relative overflow-hidden min-h-screen">
+      <section className="py-32 bg-dark relative overflow-hidden">
         <div className="container-cinematic relative">
-          {/* Desktop Chaotic Layout */}
-          <div className="hidden lg:block relative h-[1200px]">
-            {publications.map((pub, index) => (
-              <div
-                key={pub.id}
-                className={`absolute ${getSizeClasses(pub.size)} group ${
-                  isVisible ? "animate-cinematic-fade-in" : ""
-                }`}
-                style={{ ...pub.position, animationDelay: `${index * 0.2}s` }}
-              >
-                <div className="relative w-full h-full overflow-visible rounded-2xl cinematic-shadow corner-accent transition-all duration-500 ease-in-out group-hover:scale-[2.5] group-hover:z-50">
-                  <div className="relative w-full h-full overflow-hidden rounded-2xl">
-                    <Image src={pub.image || "/placeholder.svg"} alt={pub.title} fill className="object-cover group-hover:object-contain transition-all duration-500" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60 group-hover:opacity-0 transition-opacity duration-500" />
-                    <div className="absolute bottom-6 left-6 right-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 opacity-0 group-hover:opacity-100">
-                      <h3 className="text-xl font-light mb-2 text-white text-cinematic">{pub.title}</h3>
-                      <p className="text-white/80 text-sm font-light mb-2">{pub.description}</p>
+          {/* Desktop: слева/справа по очереди, без обрезки */}
+          <div className="hidden lg:flex flex-col max-w-6xl m-auto gap-16 lg:gap-0">
+            {publications.map((pub, index) => {
+              const isLeft = index % 2 === 0
+              return (
+                <div
+                  key={pub.id}
+                  className={`w-full flex ${isLeft ? "justify-start" : "justify-end"}`}
+                >
+                  <figure
+                    className={`group max-w-[900px] w-full ${
+                      isVisible ? "animate-cinematic-fade-in" : ""
+                    }`}
+                    style={{ animationDelay: `${index * 0.15}s` }}
+                  >
+                    <div className="relative w-full aspect-[16/9] rounded-2xl corner-accent overflow-hidden">
+                      <Image
+                        src={pub.image || "/placeholder.svg"}
+                        alt={pub.title}
+                        fill
+                        className="object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+                        sizes="(min-width: 1024px) 900px, 100vw"
+                        priority={index < 2}
+                      />
+                    </div>
+                    <figcaption className={`mt-4 ${isLeft ? "text-left" : "text-right"}`}>
+                      <h3 className="text-xl font-light text-white text-cinematic">{pub.title}</h3>
+                      <p className="text-white/80 text-sm font-light">{pub.description}</p>
                       <p className="text-gold text-xs font-light tracking-wide">{pub.year}</p>
-                    </div>
-                    <div className="absolute top-4 right-4 glass-dark rounded-lg p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <Eye className="h-4 w-4 text-gold" />
-                    </div>
-                  </div>
+                    </figcaption>
+                  </figure>
                 </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
 
-          {/* Mobile Grid Layout */}
-          <div className="lg:hidden grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Mobile/Tablet: просто в рядок, уменьшенные, без обрезки */}
+          <div className="lg:hidden grid grid-cols-1 gap-8">
             {publications.map((pub, index) => (
               <div
                 key={pub.id}
                 className={`group ${isVisible ? "animate-cinematic-slide-up" : ""}`}
-                style={{ animationDelay: `${index * 0.1}s` }}
+                style={{ animationDelay: `${index * 0.08}s` }}
               >
-                <div className="relative aspect-[3/4] overflow-hidden rounded-2xl cinematic-shadow corner-accent transition-all duration-500 ease-in-out group-hover:scale-105">
-                  <Image src={pub.image || "/placeholder.svg"} alt={pub.title} fill className="object-cover group-hover:object-contain transition-all duration-500" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60 group-hover:opacity-0 transition-opacity duration-500" />
-                  <div className="absolute bottom-6 left-6 right-6">
-                    <h3 className="text-lg font-light mb-2 text-white text-cinematic">{pub.title}</h3>
-                    <p className="text-white/80 text-sm font-light mb-2">{pub.description}</p>
-                    <p className="text-gold text-xs font-light tracking-wide">{pub.year}</p>
-                  </div>
+                <div className="relative w-full aspect-[16/9] overflow-hidden rounded-2xl cinematic-shadow corner-accent bg-black/60">
+                  <Image
+                    src={pub.image || "/placeholder.svg"}
+                    alt={pub.title}
+                    fill
+                    className="object-contain"
+                    sizes="100vw"
+                  />
+                </div>
+                <div className="mt-3">
+                  <h3 className="text-lg font-light text-white text-cinematic">{pub.title}</h3>
+                  <p className="text-white/80 text-sm font-light">{pub.description}</p>
+                  <p className="text-gold text-xs font-light tracking-wide">{pub.year}</p>
                 </div>
               </div>
             ))}
@@ -217,11 +219,7 @@ export default function VeroeffentlichungenPage() {
               ))}
             </div>
 
-            <Button
-              asChild
-              size="lg"
-              className="px-12 py-6 btn-primary text-lg"
-            >
+            <Button asChild size="lg" className="px-12 py-6 btn-primary text-lg">
               <Link href="/kontakt"><span>Für Ihr Magazin anfragen</span></Link>
             </Button>
           </div>

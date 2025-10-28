@@ -57,7 +57,7 @@ export default function KontaktPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl mx-auto">
             {/* Contact Form */}
             <div className={`${isVisible ? "animate-cinematic-slide-in" : ""}`} style={{ animationDelay: "0.4s" }}>
-              <div className="glass-dark rounded-2xl p-8 cinematic-shadow">
+              <div className="glass-dark p-8 cinematic-shadow">
                 <div className="text-gold text-lg font-light tracking-[0.2em] mb-4 text-dramatic">NACHRICHT SENDEN</div>
                 <h3 className="font-light tracking-wide mb-8 text-white text-cinematic accent-line-gold">
                   Projekt anfragen
@@ -159,7 +159,7 @@ export default function KontaktPage() {
               className={`${isVisible ? "animate-cinematic-slide-in-right" : ""}`}
               style={{ animationDelay: "0.6s" }}
             >
-              <div className="glass-dark rounded-2xl p-8 cinematic-shadow">
+              <div className="glass-dark p-8 cinematic-shadow">
                 <div className="text-gold text-lg font-light tracking-[0.2em] mb-4 text-dramatic">
                   KONTAKTINFORMATIONEN
                 </div>
@@ -167,7 +167,7 @@ export default function KontaktPage() {
                   Erreichen Sie mich
                 </h3>
 
-                <div className="space-y-8 mb-12">
+                <div className="space-y-1 mb-2">
                   {[
                     {
                       icon: Mail,
