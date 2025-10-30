@@ -23,7 +23,7 @@ export default function HomePage() {
             src="/hero-section.jpg"
             alt="Fotograf Studio"
             fill
-            className="object-cover opacity-30"
+            className="object-cover opacity-30 pt-32"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/30 to-transparent" />
           <div className="absolute inset-0 gradient-overlay" />

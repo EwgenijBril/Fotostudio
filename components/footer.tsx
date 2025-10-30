@@ -97,7 +97,15 @@ export function Footer() {
           style={{ animationDelay: "0.6s" }}
         >
           <p className="text-white/60 font-light">
-            &copy; {new Date().getFullYear()} Daria - Fotografin. Alle Rechte vorbehalten. Erstellt mit Rebootly
+            &copy; {new Date().getFullYear()} Daria - Fotografin. Alle Rechte vorbehalten.{' '}
+            <a
+              href="https://www.rebootly.de/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gold"
+            >
+             Erstellt mit Rebootly
+            </a>
           </p>
         </div>
       </div>

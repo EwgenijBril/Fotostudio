@@ -69,7 +69,7 @@ export function Navigation() {
                 Portfolio
                 <ChevronDown className="ml-2 h-5 w-5 group-hover:rotate-180 transition-transform duration-500" />
               </button>
-              <div className="absolute top-full left-0 mt-6 w-80 cinematic-shadow rounded-xl bg-stone-800 invisible group-hover:opacity-100 group-hover:visible transition-all duration-500 transform group-hover:translateY-0 translateY-4">
+              <div className="absolute top-full left-0 mt-10 w-80 cinematic-shadow rounded-xl bg-[#1a1a1a] invisible group-hover:opacity-100 group-hover:visible transition-all duration-500 transform group-hover:translateY-0 translateY-4">
                 <div className="p-6 space-y-2">
                   {portfolioItems.map((item, index) => (
                     <Link
@@ -130,7 +130,7 @@ export function Navigation() {
         {/* Mobile Navigation */}
         <div
           className={`lg:hidden transition-all duration-700 overflow-hidden px-4 ${
-            isOpen ? "max-h-screen opacity-100 pb-8" : "max-h-0 opacity-0"
+            isOpen ? "min-h-screen opacity-100 pb-8" : "max-h-0 opacity-0"
           }`}
         >
           <div className="rounded-2xl m-4 p-8 space-y-4 cinematic-shadow">
