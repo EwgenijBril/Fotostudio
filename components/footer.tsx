@@ -30,7 +30,9 @@ export function Footer() {
             </p>
             <div className="flex space-x-6">
               <a
-                href="mailto:d.golovchenko@gmx.de"
+                href="https://www.facebook.com/share/1A5NFYNaM6/?mibextid=wwXIfr"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-12 h-12 glass-dark rounded-xl flex items-center justify-center hover:glass-gold transition-all duration-300 group"
               >
                 <Facebook className="h-5 w-5 text-gold group-hover:scale-110 transition-transform duration-300" />
@@ -42,7 +44,9 @@ export function Footer() {
                 <Phone className="h-5 w-5 text-gold group-hover:scale-110 transition-transform duration-300" />
               </a>
               <a
-                href="https://wa.me/4915209029117"
+                href="https://www.instagram.com/daria_golovchenko?igsh=Ym02ZG44OHZ2eWgy"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-12 h-12 glass-dark rounded-xl flex items-center justify-center hover:glass-gold transition-all duration-300 group"
               >
                 <Instagram className="h-5 w-5 text-gold group-hover:scale-110 transition-transform duration-300" />

@@ -1,11 +1,7 @@
 "use client"
 
-import Image from "next/image"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { ArrowLeft, Check, Clock, Camera, Users, Award, Eye, Palette } from "lucide-react"
 import { useEffect, useState } from "react"
-import { PolaroidGallery } from "@/components/polaroid-gallery"
+import { ProductGallery } from "@/components/product-gallery"
 
 export default function KreativeShootingPage() {
   const [isVisible, setIsVisible] = useState(false)
@@ -61,10 +57,11 @@ export default function KreativeShootingPage() {
       </section>
 
       {/* Portfolio Gallery */}
-      <PolaroidGallery 
-        images={images} 
-        isVisible={isVisible} 
-        onImageClick={setSelectedImage} 
+      <ProductGallery 
+        images={images}
+        isVisible={isVisible}
+        onImageClick={setSelectedImage}
+        animationVariant="vertical"
       />
     </div>
   )

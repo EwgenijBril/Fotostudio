@@ -117,7 +117,6 @@ export function StaggeredGallery({ images, isVisible, onImageClick }: StaggeredG
                           </h3>
                           <div className="flex items-center gap-2 text-xs text-gold/80">
                             <Eye className="h-3 w-3" />
-                            <span>Посмотреть подробнее</span>
                           </div>
                         </div>
                         
@@ -128,7 +127,7 @@ export function StaggeredGallery({ images, isVisible, onImageClick }: StaggeredG
                         
                         {/* Номер изображения */}
                         <div className="absolute top-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                          <div className="w-8 h-8 border border-gold/40 rounded-lg flex items-center justify-center text-gold text-xs font-medium backdrop-blur-sm bg-black/30">
+                          <div className="w-8 h-8 border border-gold/40 flex items-center justify-center text-gold text-xs font-medium backdrop-blur-sm bg-black/30">
                             {image.id}
                           </div>
                         </div>
@@ -182,7 +181,6 @@ export function StaggeredGallery({ images, isVisible, onImageClick }: StaggeredG
                           </h3>
                           <div className="flex items-center gap-2 text-xs text-gold/80">
                             <Eye className="h-3 w-3" />
-                            <span>Посмотреть подробнее</span>
                           </div>
                         </div>
                         
@@ -193,7 +191,7 @@ export function StaggeredGallery({ images, isVisible, onImageClick }: StaggeredG
                         
                         {/* Номер изображения */}
                         <div className="absolute top-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                          <div className="w-8 h-8 border border-gold/40 rounded-lg flex items-center justify-center text-gold text-xs font-medium backdrop-blur-sm bg-black/30">
+                          <div className="w-8 h-8 border border-gold/40 flex items-center justify-center text-gold text-xs font-medium backdrop-blur-sm bg-black/30">
                             {image.id}
                           </div>
                         </div>

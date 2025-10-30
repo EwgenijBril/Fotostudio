@@ -1,9 +1,5 @@
 "use client"
 
-import Image from "next/image"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { ArrowLeft, Check, Clock, Camera, Users, Award, Eye } from "lucide-react"
 import { useEffect, useState } from "react"
 import { MasonryGallery } from "@/components/masonry-gallery"
 

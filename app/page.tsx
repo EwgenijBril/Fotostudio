@@ -35,12 +35,17 @@ export default function HomePage() {
               <div className={`${isVisible ? "animate-cinematic-slide-in" : ""}`}>
                 <div className="flex justify-center space-x-6 py-10">
                   <a
-                    href="mailto:d.golovchenko@gmx.de"
+                    href="https://www.facebook.com/share/1A5NFYNaM6/?mibextid=wwXIfr"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     <Facebook className="h-7 w-7 text-gold group-hover:scale-110 transition-transform duration-300" />
                   </a>
+
                   <a
-                    href="tel:+4915209029117"
+                    href="https://www.instagram.com/daria_golovchenko?igsh=Ym02ZG44OHZ2eWgy"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     <Instagram className="h-7 w-7 text-gold group-hover:scale-110 transition-transform duration-300" />
                   </a>

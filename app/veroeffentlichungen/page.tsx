@@ -121,7 +121,7 @@ export default function VeroeffentlichungenPage() {
       <section className="py-32 bg-dark relative overflow-hidden">
         <div className="container-cinematic relative">
           {/* Desktop: слева/справа по очереди, без обрезки */}
-          <div className="hidden lg:flex flex-col max-w-6xl m-auto gap-16 lg:gap-0">
+          <div className="hidden lg:flex flex-col max-w-7xl m-auto gap-16 lg:gap-0">
             {publications.map((pub, index) => {
               const isLeft = index % 2 === 0
               return (

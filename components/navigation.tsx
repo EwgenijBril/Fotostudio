@@ -25,7 +25,6 @@ export function Navigation() {
     { name: "Kinder und Familie", href: "/portfolio/kinder-und-familie" },
     { name: "Reportage", href: "/portfolio/reportage" },
     { name: "Food Foto", href: "/portfolio/food-foto" },
-    { name: "Produkt Foto", href: "/portfolio/produkt-foto" },
   ]
 
   return (

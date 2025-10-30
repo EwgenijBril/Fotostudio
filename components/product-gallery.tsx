@@ -17,9 +17,10 @@ interface ProductGalleryProps {
   images: ImageProps[]
   isVisible: boolean
   onImageClick: (id: number | null) => void
+  animationVariant?: "horizontal" | "vertical"
 }
 
-export function ProductGallery({ images, isVisible, onImageClick }: ProductGalleryProps) {
+export function ProductGallery({ images, isVisible, onImageClick, animationVariant = "horizontal" }: ProductGalleryProps) {
   const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set())
   const [visibleImages, setVisibleImages] = useState<Set<number>>(new Set())
   const imageRefs = useRef<Map<number, HTMLDivElement>>(new Map())
@@ -93,7 +94,10 @@ export function ProductGallery({ images, isVisible, onImageClick }: ProductGalle
     if (index < 4) {
       return "animate-cinematic-fade-in"
     }
-    // Следующие появляются слева/справа по очереди
+    // Следующие появляются по выбранному направлению
+    if (animationVariant === "vertical") {
+      return index % 2 === 0 ? "animate-product-slide-in-top" : "animate-product-slide-in-bottom"
+    }
     return index % 2 === 0 ? "animate-product-slide-in-left" : "animate-product-slide-in-right"
   }
 
