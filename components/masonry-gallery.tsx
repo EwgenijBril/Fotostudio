@@ -1,7 +1,6 @@
 "use client"
 
 import Image from "next/image"
-import { Eye } from "lucide-react"
 import Masonry from "react-masonry-css"
 import { useState, useEffect } from "react"
 
@@ -71,7 +70,11 @@ export function MasonryGallery({ images, isVisible, onImageClick }: MasonryGalle
             className="masonry-grid"
             columnClassName="masonry-grid-column"
           >
-            {images.map((image, index) => (
+            {images.map((image, index) => {
+              // Первые 8 изображений загружаются сразу, остальные - лениво
+              const shouldLoadEagerly = index < 8
+              
+              return (
               <div 
                 key={image.id}
                 className={`masonry-item group cursor-pointer ${isVisible ? "animate-cinematic-fade-in" : ""}`}
@@ -89,20 +92,21 @@ export function MasonryGallery({ images, isVisible, onImageClick }: MasonryGalle
                     height={getImageSize(index).height}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     onLoad={() => handleImageLoad(image.id)}
-                    loading="lazy"
+                    loading={shouldLoadEagerly ? "eager" : "lazy"}
                     placeholder="blur"
                     blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
                   <div className="absolute bottom-4 left-4 right-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                    <h3 className="text-sm font-light text-white mb-2 text-cinematic">{image.alt}</h3>
+                    {/* <h3 className="text-sm font-light text-white mb-2 text-cinematic">{image.alt}</h3> */}
                   </div>
-                  <div className="absolute top-4 right-4 glass-dark rounded-lg p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  {/* <div className="absolute top-4 right-4 glass-dark rounded-lg p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <Eye className="h-4 w-4 text-gold" />
-                  </div>
+                  </div> */}
                 </div>
               </div>
-            ))}
+              )
+            })}
           </Masonry>
         </div>
       </div>
