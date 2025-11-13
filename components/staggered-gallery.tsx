@@ -55,7 +55,8 @@ export function StaggeredGallery({ images, isVisible, onImageClick }: StaggeredG
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Разделяем изображения на две колонки
+  // Разделяем изображения на две колонки для десктопа
+  // На мобильных все изображения будут в одной колонке через CSS
   const leftColumn = images.filter((_, index) => index % 2 === 0)
   const rightColumn = images.filter((_, index) => index % 2 === 1)
 
@@ -100,42 +101,17 @@ export function StaggeredGallery({ images, isVisible, onImageClick }: StaggeredG
                         src={image.src}
                         alt={image.alt}
                         width={400}
-                        height={500}
+                        height={600}
                         className="staggered-image"
                         loading="lazy"
+                        sizes="(max-width: 768px) 100vw, 50vw"
                       />
                       
                       {/* Оверлей */}
                       <div className="staggered-overlay">
                         {/* Градиент */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                        
-                        {/* Информация */}
-                        <div className="absolute bottom-6 left-6 right-6 transform translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                          <h3 className="text-lg font-light text-white mb-2 text-cinematic">
-                            {image.alt}
-                          </h3>
-                          <div className="flex items-center gap-2 text-xs text-gold/80">
-                            <Eye className="h-3 w-3" />
-                          </div>
-                        </div>
-                        
-                        {/* Иконка просмотра */}
-                        <div className="absolute top-4 right-4 w-10 h-10 glass-dark rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transform scale-90 group-hover:scale-100 transition-all duration-300">
-                          <Eye className="h-4 w-4 text-gold" />
-                        </div>
-                        
-                        {/* Номер изображения */}
-                        <div className="absolute top-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                          <div className="w-8 h-8 border border-gold/40 flex items-center justify-center text-gold text-xs font-medium backdrop-blur-sm bg-black/30">
-                            {image.id}
-                          </div>
-                        </div>
-                      </div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" /></div>
                     </div>
-                    
-                    {/* Декоративная граница */}
-                    <div className="staggered-border opacity-0 group-hover:opacity-100" />
                   </div>
                 </div>
               ))}
@@ -164,42 +140,18 @@ export function StaggeredGallery({ images, isVisible, onImageClick }: StaggeredG
                         src={image.src}
                         alt={image.alt}
                         width={400}
-                        height={500}
+                        height={600}
                         className="staggered-image"
                         loading="lazy"
+                        sizes="(max-width: 768px) 100vw, 50vw"
                       />
                       
                       {/* Оверлей */}
                       <div className="staggered-overlay">
                         {/* Градиент */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                        
-                        {/* Информация */}
-                        <div className="absolute bottom-6 left-6 right-6 transform translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                          <h3 className="text-lg font-light text-white mb-2 text-cinematic">
-                            {image.alt}
-                          </h3>
-                          <div className="flex items-center gap-2 text-xs text-gold/80">
-                            <Eye className="h-3 w-3" />
-                          </div>
-                        </div>
-                        
-                        {/* Иконка просмотра */}
-                        <div className="absolute top-4 right-4 w-10 h-10 glass-dark rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transform scale-90 group-hover:scale-100 transition-all duration-300">
-                          <Eye className="h-4 w-4 text-gold" />
-                        </div>
-                        
-                        {/* Номер изображения */}
-                        <div className="absolute top-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                          <div className="w-8 h-8 border border-gold/40 flex items-center justify-center text-gold text-xs font-medium backdrop-blur-sm bg-black/30">
-                            {image.id}
-                          </div>
-                        </div>
                       </div>
                     </div>
-                    
-                    {/* Декоративная граница */}
-                    <div className="staggered-border opacity-0 group-hover:opacity-100" />
                   </div>
                 </div>
               ))}

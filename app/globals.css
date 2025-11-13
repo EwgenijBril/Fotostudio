@@ -4433,7 +4433,7 @@
 .staggered-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 500px));
-  gap: 40px;
+  gap: 20px;
   align-items: start;
   justify-content: center;
   max-width: 1100px;
@@ -4898,7 +4898,6 @@
   width: 100%;
   height: auto;
   background: #1a1a1a;
-  border-radius: 12px;
   overflow: hidden;
   transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
   box-shadow: 
@@ -4921,15 +4920,15 @@
 .staggered-image-wrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 4/5; /* Соотношение сторон для food фото */
   overflow: hidden;
 }
 
 .staggered-image {
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: cover;
   transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  display: block;
 }
 
 /* Изображение остается без изменений при hover */
@@ -5714,7 +5713,8 @@
   .staggered-grid {
     grid-template-columns: 1fr;
     gap: 30px;
-    max-width: 500px;
+    max-width: 100%;
+    padding: 0 20px;
   }
   
   .staggered-column {
@@ -5726,12 +5726,18 @@
     margin-top: 0;
   }
   
+  /* На мобильных обе колонки отображаются последовательно в одной колонке */
+  .staggered-column-left,
+  .staggered-column-right {
+    width: 100%;
+  }
+  
   .staggered-card:hover {
     transform: translateY(-2px);
   }
   
   .staggered-image-wrapper {
-    aspect-ratio: 4/5;
+    /* Убираем фиксированный aspect-ratio для сохранения естественных пропорций */
   }
   
   /* Упрощаем параллакс на мобильных */
@@ -5944,7 +5950,8 @@
 @media (max-width: 480px) {
   .staggered-grid {
     gap: 20px;
-    max-width: 400px;
+    max-width: 100%;
+    padding: 0 15px;
   }
   
   .staggered-column {
@@ -5952,7 +5959,7 @@
   }
   
   .staggered-image-wrapper {
-    aspect-ratio: 1/1; /* Квадратное соотношение на маленьких экранах */
+    /* Сохраняем естественные пропорции изображений */
   }
 }
 
