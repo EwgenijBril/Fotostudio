@@ -144,7 +144,7 @@ export function Navigation() {
             isOpen ? "min-h-screen opacity-100 pb-8" : "max-h-0 opacity-0"
           }`}
         >
-          <div className="rounded-2xl m-4 p-8 space-y-4 cinematic-shadow overflow-y-auto max-h-[calc(100vh-8rem)]">
+          <div className="rounded-2xl m-4 p-8 space-y-4 cinematic-shadow overflow-y-auto max-h-[calc(100vh-12rem)]">
             {[
               { name: "Home", href: "/" },
               { name: "Über mich", href: "/about-mich" },
