@@ -37,7 +37,7 @@ export function Navigation() {
           <Link href="/" className="group relative">
             <div className="flex items-center">
                <img
-                     src="android-chrome-512x512.png"
+                     src="/android-chrome-512x512.png"
                      alt="partnerin_daria"
                      className="h-20 w-20 ml-3 object-contain filter grayscale transition-all duration-300 group-hover:grayscale-0 group-hover:scale-105"
                      loading="lazy"
@@ -133,7 +133,7 @@ export function Navigation() {
             isOpen ? "min-h-screen opacity-100 pb-8" : "max-h-0 opacity-0"
           }`}
         >
-          <div className="rounded-2xl m-4 p-8 space-y-4 cinematic-shadow">
+          <div className="rounded-2xl m-4 p-8 space-y-4 cinematic-shadow overflow-y-auto max-h-[calc(100vh-8rem)]">
             {[
               { name: "Home", href: "/" },
               { name: "Über mich", href: "/about-mich" },
