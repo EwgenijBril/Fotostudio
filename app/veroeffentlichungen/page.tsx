@@ -34,7 +34,7 @@ export default function VeroeffentlichungenPage() {
         <div className="container-cinematic text-center relative z-10">
           <div className={`${isVisible ? "animate-cinematic-slide-up" : ""}`}>
             <div className="text-gold text-lg font-light tracking-[0.2em] mb-4 text-dramatic">PUBLIKATIONEN</div>
-            <h1 className="font-light tracking-wide mb-8 text-white text-cinematic accent-line-gold inline-block">
+            <h1 className="font-light tracking-wide mb-8 text-white text-cinematic accent-line-gold inline-block text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
               Veröffentlichungen
             </h1>
             <p className="text-white/90 mb-8 max-w-4xl mx-auto font-light leading-relaxed">
