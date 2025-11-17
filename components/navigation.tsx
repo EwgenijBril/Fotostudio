@@ -113,9 +113,9 @@ export function Navigation() {
 
           {/* Mobile menu button */}
           <Button
-          variant="ghost"
+            variant="ghost"
             size="sm"
-            className="lg:hidden"
+            className="lg:hidden bg-transparent hover:bg-transparent"
             onClick={() => setIsOpen(!isOpen)}
           >
             <div className="relative w-6 h-6 flex items-center">

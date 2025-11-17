@@ -18,7 +18,7 @@ export function Footer() {
           <div className={`col-span-1 md:col-span-2 ${isVisible ? "animate-cinematic-slide-in" : ""}`}>
             <div className="flex items-center space-x-4 mb-6">
               <img
-                     src="android-chrome-512x512.png"
+                     src="/android-chrome-512x512.png"
                      alt="partnerin_daria"
                      className="h-20 w-20 object-contain filter grayscale transition-all duration-300 group-hover:grayscale-0 group-hover:scale-105"
                      loading="lazy"
