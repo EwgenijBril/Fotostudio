@@ -40,16 +40,6 @@ export default function VeroeffentlichungenPage() {
             <p className="text-white/90 mb-8 max-w-4xl mx-auto font-light leading-relaxed">
               Kreative Shootings, die in internationalen Zeitschriften veröffentlicht wurden
             </p>
-            <div className="flex items-center justify-center gap-12 text-white/80">
-              <div className="flex items-center gap-3">
-                <Award className="h-6 w-6 text-gold" />
-                <span className="font-light">Internationale Magazine</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <Star className="h-6 w-6 text-gold" />
-                <span className="font-light">Anerkannte Arbeiten</span>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -119,7 +109,7 @@ export default function VeroeffentlichungenPage() {
 
         <div className="container-cinematic text-center relative z-10">
           <div className={`${isVisible ? "animate-cinematic-slide-up" : ""}`} style={{ animationDelay: "1.6s" }}>
-            <h2 className="font-light tracking-wide mb-8 text-cinematic text-glow accent-line-gold inline-block">
+            <h2 className="font-light tracking-wide mb-8 text-cinematic text-glow accent-line-gold inline-block text-2xl sm:text-4xl">
               Branchenanerkennung
             </h2>
             <p className="text-white/90 mb-12 max-w-4xl mx-auto font-light leading-relaxed">
